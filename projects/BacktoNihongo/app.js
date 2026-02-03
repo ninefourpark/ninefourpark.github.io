@@ -173,7 +173,7 @@ function loadCard() {
   cards = JSON.parse(localStorage.getItem("cards")) || [];
   
   if (cards.length === 0) {
-    alert("没有卡片数据，请先导入或添加卡片。");
+    alert("您的浏览器储存里还没有存放任何卡片。请点击右上角的“刷新卡片”按钮，将您 Google 表格中的卡片导入至浏览器存储。");
     return;
   }
 
@@ -543,3 +543,4 @@ function importFromClipboard() {
   document.getElementById("importArea").value = "";
   alert("导入完成。");
 }
+
