@@ -23,8 +23,7 @@
     <div id="app" class="hidden">
 
         <header>
-            <div>
-                <button onclick="refreshCards()">刷新数据</button>
+            <div  style="display: flex; align-items: center; gap: 10px;">
                 <select id="modeSelect" onchange="loadCard()" style="width: auto; margin: 0;">
                     <option value="new">练习新卡</option>
                     <option value="learned">复习旧卡</option>
@@ -32,15 +31,17 @@
                         <option value="all">全部</option>
                         -->
                 </select>
-            <button id="restartReviewBtn"
-            class="hidden"
-            onclick="restartReview()">
-                开始新一轮复习
-            </button>
+                <button id="restartReviewBtn"
+                class="hidden"
+                onclick="restartReview()">
+                    开始新一轮复习
+                </button>
             </div>
 
             <div style="display: flex; align-items: center; gap: 10px;">
-                <span id="userLabel"></span>
+                <div style="text-align: center; ">
+                    <span id="userLabel"></span>
+                </div>
                 <button id="logoutBtn" onclick="logout()" >
                 登出
                 </button>
@@ -109,28 +110,52 @@
     </summary>
 
     <div style="margin-top: 15px;">
-        <p class="introductions">将现有卡片导出为文本，可直接粘贴备份到表格中。</p>
+        <p class="introductions">将现有学习数据导出为文本，可直接粘贴备份到 Excel 或 Google Sheet 表格中。</p>
         <button onclick="exportToClipboard()" class="btn">导出全部数据到剪贴板</button>
     </div>
 
     <hr style="border: 0; border-top: 1px solid #555; margin: 20px 0;">
 
     <div style="margin-bottom: 20px;">
-        <strong>方式 A：粘贴表格数据</strong>
         <p class="introductions">从 Excel 或 Google Sheet 复制整表，直接粘贴在下方：</p>
         <textarea id="importArea" placeholder="在此粘贴表格内容..." style="width: 100%; height: 80px; margin-top: 5px;"></textarea>
         <button onclick="importFromClipboard()" class="btn">导入粘贴内容</button>
     </div>
 
+
+</details>
+
+<details style="margin-top: 20px;">
+<summary style="cursor: pointer; font-size: 0.9em;">新增记忆卡片</summary>
+    <div id="addCard" style="margin-bottom: 30px;">
+        <h4 style="margin-top: 10px; margin-bottom: 10px;">方式 A：手动添加</h4>
+        <textarea id="newJa" placeholder="输入日文原文"></textarea>
+        <textarea id="newZh" placeholder="输入中文翻译"></textarea>
+            <label for="newSource"></label>
+        <input type="text" id="newSource" placeholder="句子来源" />
+        <textarea id="newNote" placeholder="补充笔记（可选）"></textarea>
+        <div class="submitAnswerBtns">
+            <button onclick="addCard()" style="flex: 1;">确认加入 Ctrl + Enter</button>
+            <button onclick="copyNewCards()" style="flex: 1;">复制新增卡片</button>
+        </div>
+    </div>
+
+    <hr style="border: 0; border-top: 1px solid #555; margin: 20px 0;">
+
+
     <div style="margin-bottom: 20px;">
-        <strong>方式 B：云端链接导入</strong>
+        <h4 style="margin-top: 10px; margin-bottom: 10px;">方式 B：云端链接导入</h4>
         <p class="introductions">输入 Google Sheet 的 CSV 发布链接：</p>
         <div style="display: flex; gap: 10px;">
             <input type="text" id="googleSheetLink" placeholder="https://docs.google.com/..." style="flex: 3; padding: 8px;">
             <button onclick="setGoogleSheetLink()" style="flex: 1;" class="btn">保存链接</button>
         </div>
-        <p class="introductions">保存后点击页面左上角「刷新数据」即可同步。</p>
+        <p class="introductions">保存后点击「刷新数据」即可同步。</p>
+        <button onclick="refreshCards()" style="width: 100%;">刷新数据</button>
+
     </div>
+
+
 
     <section class="guide"
     style="font-size: 0.9em; line-height: 1.6; padding: 15px;">
@@ -144,21 +169,8 @@
         2. 点击 <strong>「文件」>「共享」>「发布到网络」</strong>。<br>
         3. 选择 <strong>「整个文档」</strong> 和 <strong>「逗号分隔值 (.csv)」</strong>，点击发布并复制链接。
     </section>
-</details>
 
-<details style="margin-top: 20px;">
-<summary style="cursor: pointer; font-size: 0.9em;">新增记忆卡片</summary>
-<section id="addCard" style="margin-top: 10px;">
-    <textarea id="newJa" placeholder="输入日文原文"></textarea>
-    <textarea id="newZh" placeholder="输入中文翻译"></textarea>
-        <label for="newSource"></label>
-    <input type="text" id="newSource" placeholder="句子来源" />
-    <textarea id="newNote" placeholder="补充笔记（可选）"></textarea>
-    <div class="submitAnswerBtns">
-        <button onclick="addCard()" style="flex: 1;">确认加入 Ctrl + Enter</button>
-        <button onclick="copyNewCards()" style="flex: 1;">复制新增卡片（CSV）</button>
-    </div>
-</section>
+
 </details>
 
 </div>
