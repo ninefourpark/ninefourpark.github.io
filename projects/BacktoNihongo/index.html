@@ -79,7 +79,7 @@
             <button onclick="disableCard()" style="flex: 1;">不再练习</button>
 
         </div>
-        
+
         <div class="keyboardExplain">
             <p style="flex: 2;">Ctrl + Enter</p>
             <p style="flex: 2;">Ctrl + → </p>
@@ -102,21 +102,6 @@
             <pre id="resultText"></pre>
         </section>
     </div>
-
-    <details style="margin-top: 20px;">
-    <summary style="cursor: pointer; font-size: 0.9em;">新增记忆卡片</summary>
-    <section id="addCard" style="margin-top: 10px;">
-        <textarea id="newJa" placeholder="输入日文原文"></textarea>
-        <textarea id="newZh" placeholder="输入中文翻译"></textarea>
-            <label for="newSource"></label>
-        <input type="text" id="newSource" placeholder="句子来源" />
-        <textarea id="newNote" placeholder="补充笔记（可选）"></textarea>
-        <div class="submitAnswerBtns">
-            <button onclick="addCard()" style="flex: 1;">确认加入 Ctrl + Enter</button>
-            <button onclick="copyNewCards()" style="flex: 1;">复制新增卡片（CSV）</button>
-        </div>
-    </section>
-    </details>
 
 <details style="margin-top: 20px;">
     <summary style="cursor: pointer; font-size: 0.9em;">
@@ -161,7 +146,21 @@
     </section>
 </details>
 
-    
+<details style="margin-top: 20px;">
+<summary style="cursor: pointer; font-size: 0.9em;">新增记忆卡片</summary>
+<section id="addCard" style="margin-top: 10px;">
+    <textarea id="newJa" placeholder="输入日文原文"></textarea>
+    <textarea id="newZh" placeholder="输入中文翻译"></textarea>
+        <label for="newSource"></label>
+    <input type="text" id="newSource" placeholder="句子来源" />
+    <textarea id="newNote" placeholder="补充笔记（可选）"></textarea>
+    <div class="submitAnswerBtns">
+        <button onclick="addCard()" style="flex: 1;">确认加入 Ctrl + Enter</button>
+        <button onclick="copyNewCards()" style="flex: 1;">复制新增卡片（CSV）</button>
+    </div>
+</section>
+</details>
+
 </div>
 
 <script src="app.js"></script>
