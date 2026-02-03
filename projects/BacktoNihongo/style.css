@@ -62,7 +62,7 @@ h2, h3 { margin: 0 0 16px 0; font-size: 1.2em; font-weight: 700; color: #1e293b;
 input, textarea, select { 
     font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif; 
     width: 100%; 
-    padding: 14px; 
+    padding: 10px; 
     margin-bottom: 16px; 
     border: 2.5px solid #64748b; 
     border-radius: 8px; 
@@ -81,12 +81,13 @@ input:focus, textarea:focus {
 
 
 button { 
-    padding: 12px 24px; 
+    padding: 10px 20px; 
     border: 2.5px solid #2d3436; 
     border-radius: 8px; 
     background: #1369b4; 
     color: #f3f3f3;
     font-weight: 700; 
+    font-size: 0.85em;
     cursor: pointer; transition: transform 0.1s, box-shadow 0.1s; box-shadow: 3px 3px 0px #2d3436; } 
 
 button:hover { 
