@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Back to Nihongo 日文回译练习</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+    <div id="login">
+        <h2>登入练习系统</h2>
+        <div class="introductions">
+            访客可以使用 visitor 作为用户名登录。
+        </div>
+        <input id="username" placeholder="输入用户名">
+
+        <label for="googleSheetLink">输入您的 Google Sheet 链接：</label>
+        <div style="display: flex; gap: 10px; margin-top: 5px;" >
+            <input type="text" style="flex: 3" id="googleSheetLink" placeholder="https://docs.google.com/spreadsheets/d/e/2PACX-xxx/pub?gid=0&single=true&output=csv" />
+            <button onclick="setGoogleSheetLink()" style="flex: 1" >保存链接</button>
+        </div>
+
+        <button onclick="login()">开始学习</button>
+    </div>
+
+    <div id="app" class="hidden">
+
+        <header>
+            <span id="userLabel"></span>
+            <div>
+                <select id="modeSelect" onchange="loadCard()" style="width: auto; margin: 0;">
+                    <option value="new">练习新卡</option>
+                    <option value="learned">复习旧卡</option>
+                    <!--
+                        <option value="all">全部</option>
+                        -->
+                </select>
+            <button id="restartReviewBtn"
+            class="hidden"
+            onclick="restartReview()">
+                开始新一轮复习
+            </button>
+            <button onclick="refreshCards()">刷新卡片</button>
+
+            </div>
+        </header>
+        <div class="ankiCard">
+
+        <section id="statusMessage" class="hidden"></section>
+        <div style="display: flex; justify-content: space-between;">
+            <div id="cardMeta"></div>
+            <div id="source" class="hidden"></div>
+        </div>
+
+        <section id="zh" class="question"></section>
+        
+        <textarea id="answer" rows="3" placeholder="在此输入日文回译..."></textarea>
+        
+        <section id="ja" class="hidden question"></section>
+        <section id="note" class="hidden"></section>
+        
+        <div class="submitAnswerBtns">
+            <button onclick="submitAnswer()" style="flex: 2;">提交答案</button>
+            <button onclick="nextCard()" style="flex: 2;">下一张卡片</button>
+            <button onclick="disableCard()" style="flex: 1;">不再练习</button>
+
+        </div>
+        <div class="keyboardExplain">
+            <p style="flex: 2;">Ctrl + Enter</p>
+            <p style="flex: 2;">Ctrl + → </p>
+            <p style="flex: 1;"></p>
+        </div>
+        </div>
+
+        <section id="result" class="hidden">
+            <div class="copyBtns">
+                <div class="keyboardExplain" style="margin-top: 10px;">
+                <button onclick="copyResult()" style="justify-content: flex-end;">复制结果</button>
+                    <p>Ctrl + Shift + C</p>
+                </div>
+            </div>
+            <pre id="resultText"></pre>
+        </section>
+    </div>
+
+    <details style="margin-top: 20px;">
+    <summary style="cursor: pointer; font-size: 0.9em;">新增记忆卡片</summary>
+    <section id="addCard" style="margin-top: 10px;">
+        <textarea id="newJa" placeholder="输入日文原文"></textarea>
+        <textarea id="newZh" placeholder="输入中文翻译"></textarea>
+            <label for="newSource"></label>
+        <input type="text" id="newSource" placeholder="句子来源" />
+        <textarea id="newNote" placeholder="补充笔记（可选）"></textarea>
+        <div class="submitAnswerBtns">
+            <button onclick="addCard()" style="flex: 1;">确认加入 Ctrl + Enter</button>
+            <button onclick="copyNewCards()" style="flex: 1;">复制新增卡片（CSV）</button>
+        </div>
+    </section>
+    </details>
+
+    <details style="margin-top: 15px; ">
+        <summary style="cursor: pointer; font-size: 0.9em;">数据管理（导入/导出）</summary>
+
+        <div class="introductions">
+            导出格式为制表符分隔的文本，适合粘贴到 Google Sheet 中。
+        </div>
+        <div class="importExportBtns">
+            <button onclick="exportToClipboard()">导出全部数据</button>
+        </div>
+
+        <div class="introductions">
+            您也可以从 Google Sheet 复制表格内容，粘贴在下方文本框中进行导入。
+        </div>
+        <div class="importExportBtns">
+            <!--
+                <button onclick="exportCSV()" style="flex: 1;">导出 CSV</button>
+                <label class="import-btn" style="cursor: pointer; flex: 1; border: 1px solid #ccc; text-align: center; padding: 5px; border-radius: 4px;">
+                    导入 <input type="file" accept=".csv" onchange="importCSV(event)" style="display: none;">
+                </label>
+                -->
+            <textarea id="importArea"
+            placeholder="从 Google Sheet 复制表格，粘贴在这里"
+            ></textarea>
+            <button onclick="importFromClipboard()">导入数据</button>
+        </div>
+
+        <DIV class="introductions">
+            使用 Google Sheet 来管理您的记忆卡片。请将您的 Google Sheet 发布为 CSV 格式，然后将链接粘贴在下方输入框中。<br/>
+            注意：请确保您的 Google Sheet 已设置为“任何拥有链接的人都可以查看”，否则系统将无法访问您的数据。
+        </DIV>
+
+        <label for="googleSheetLink">输入您的 Google Sheet 链接：</label>
+        <div style="display: flex; gap: 10px; margin-top: 5px;" >
+            <input type="text" style="flex: 3" id="googleSheetLink" placeholder="https://docs.google.com/spreadsheets/d/e/2PACX-xxx/pub?gid=0&single=true&output=csv" />
+            <button onclick="setGoogleSheetLink()" style="flex: 1" >保存链接</button>
+        </div>
+
+    </details>
+
+
+    
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
+
+

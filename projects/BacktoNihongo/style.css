@@ -1,0 +1,175 @@
+body { 
+    font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif; 
+    background: #5a9bdc;
+    color: #1a1a1a;
+    line-height: 1.5;
+    margin: 0;
+    padding: 40px 20px;
+    display: flex;
+    justify-content: center;
+} 
+
+.container { width: 100%; max-width: 520px; } 
+
+.hidden { display: none !important; } 
+
+#userLabel { 
+    color: #1a1a1a; 
+    margin-bottom: 6px; 
+    display: block;
+}
+
+section, #login, .ankiCard, #note, pre, details { 
+    border: 2.5px solid #2d3436; 
+    padding: 28px; 
+    margin-bottom: 28px; 
+    background: #eeeeee; 
+    border-radius: 8px;
+}
+#login, .ankiCard, details { box-shadow: 4px 4px 0px #2d3436; } 
+#addCard {
+    border: none;
+    padding: 10px;
+    margin-bottom: 0;
+}
+#statusMessage { 
+    margin-bottom: 16px; 
+    padding: 12px; 
+    border: 2.5px solid #bb3e03; 
+    border-radius: 8px; 
+    background: #ffe5e0; 
+    color: #641e16; 
+    font-weight: 700; 
+    text-align: center;    
+}
+
+header { 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    margin-bottom: 24px; 
+    font-size: 0.85em; 
+    color: #64748b; 
+} 
+
+h2, h3 { margin: 0 0 16px 0; font-size: 1.2em; font-weight: 700; color: #1e293b; } 
+
+input, textarea, select { 
+    font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif; 
+    width: 100%; 
+    padding: 14px; 
+    margin-bottom: 16px; 
+    border: 2.5px solid #2d3436; 
+    border-radius: 8px; 
+    box-sizing: border-box; 
+    font-size: 1em; 
+    background: #fdfdfd; 
+    transition: background 0.2s; 
+} 
+
+input:focus, textarea:focus { background: #f1f5f9; outline: none; } 
+
+button { 
+    padding: 12px 24px; 
+    border: 2.5px solid #2d3436; 
+    border-radius: 8px; 
+    background: #1369b4; 
+    color: #f3f3f3;
+    font-weight: 700; 
+    cursor: pointer; transition: transform 0.1s, box-shadow 0.1s; box-shadow: 3px 3px 0px #2d3436; } 
+
+button:hover { 
+    transform: translate(-1px, -1px); 
+    background: #1580d0; 
+    box-shadow: 4px 4px 0px #2d3436; 
+} 
+
+button:active { transform: translate(2px, 2px); box-shadow: 0px 0px 0px #2d3436; } 
+
+button[onclick="submitAnswer()"],
+button[onclick="setGoogleSheetLink()"] { 
+    background: #118d3e; 
+}
+button[onclick="nextCard()"],
+button[onclick="restartReview()"] { 
+    background: #cf8908; 
+}
+button[onclick="disableCard()"],
+button[onclick="importFromClipboard()"] { 
+    background: #bb3e03;
+}
+
+button[onclick="submitAnswer()"]:hover, 
+button[onclick="setGoogleSheetLink()"]:hover { 
+    background: #16a34a; 
+}
+button[onclick="nextCard()"]:hover,
+button[onclick="restartReview()"]:hover { 
+    background: #eab308; 
+}
+button[onclick="disableCard()"]:hover,
+button[onclick="importFromClipboard()"]:hover { 
+    background: #dc2626;
+}
+
+button[onclick="setGoogleSheetLink()"],
+button[onclick="importFromClipboard()"],
+button[onclick="exportToClipboard()"] { 
+    margin-bottom: 16px;
+}
+
+#zh { 
+    font-size: 1.4em; 
+    font-weight: 600; 
+    color: #1e293b; 
+    border: none;
+    text-align: left;
+    padding-inline: 15px;
+    margin-bottom: 15px;
+} 
+
+#ja { 
+    font-size: 1.2em; 
+    font-weight: 600; 
+    color: #1e293b; 
+    border: none;
+    text-align: left;
+    padding-inline: 15px;
+    padding-block: 0px;
+}
+
+#note { background: #fefce8; border-color: #eab308; color: #854d0e; font-size: 0.95em; } 
+
+pre { 
+    background: #f8fafc; border: 1.5px solid #e2e8f0; white-space: pre-wrap; font-size: 0.9em; } 
+
+#cardMeta, #source { font-size: 0.8em;  margin-bottom: 10px; } 
+
+.submitAnswerBtns, .importExportBtns { 
+    display: flex; 
+    gap: 14px; 
+    margin-top: 10px; 
+}
+
+.keyboardExplain { 
+    display: flex; 
+    justify-content: space-between; 
+    color: #475569; 
+    font-size: 0.8em; 
+    margin-top: -10px; 
+    text-align: center;
+    padding-right: 24px; 
+    gap: 14px; 
+}
+
+.introductions {
+    font-size: 0.9em;
+    color: #555;
+    line-height: 1.4;
+    margin-top: 10px; 
+    margin-bottom: 10px; 
+}
+
+.copyBtns {
+    display: flex;gap: 15px;text-align: center;justify-items: center;/* justify-content: center; */
+}
