@@ -46,33 +46,31 @@
                 </button>
             </div>
         </header>
+
+
         <div class="ankiCard">
 
         <section id="statusMessage" class="hidden"></section>
-<div id="visitorHint" class="hidden">
-    <p>您的库中暂无卡片。</p>
-    
-    <div style="background: #f9f9f9; color: #374151; padding: 15px; border-radius: 8px; margin-bottom: 20px;">
-        <strong>快速体验：</strong><br>
-        点击按钮注入示例卡片，立即开始练习。<br>
-        <button id="useExampleCardsBtn" onclick="useExampleCards()" class="btn" style="margin-top: 10px;">使用示例卡片</button>
-    </div>
+        <div id="visitorHint" class="hidden">
+            <p>您的库中暂无卡片。</p>
+            
+            <div style="background: #f9f9f9; color: #374151; padding: 15px; border-radius: 8px; margin-bottom: 20px;">
+                <strong>快速体验：</strong><br>
+                点击按钮注入示例卡片，立即开始练习。<br>
+                <button id="useExampleCardsBtn" onclick="useExampleCards()" class="btn" style="margin-top: 10px;">使用示例卡片</button>
+            </div>
 
-</div>
+        </div>
 
-        <div style="display: flex; justify-content: space-between;">
+        <div class="cardHeader" style="display: flex; justify-content: space-between;">
             <div id="cardMeta"></div>
             <div id="source" class="hidden"></div>
         </div>
 
-
-        <section id="zh" class="question">
-        </section>
-        
-        
-        <section id="ja" class="hidden question"></section>
+        <section id="zh" class="questionText"></section>
+        <section id="ja" class="hidden answerText"></section>
         <textarea id="answer" rows="3" placeholder="请把这句中文翻译成日语..."></textarea>
-        
+
         <section id="note" class="hidden"></section>
         
         <div class="submitAnswerBtns">
@@ -81,11 +79,17 @@
             <button onclick="disableCard()" style="flex: 1;">不再练习</button>
 
         </div>
+        
         <div class="keyboardExplain">
             <p style="flex: 2;">Ctrl + Enter</p>
             <p style="flex: 2;">Ctrl + → </p>
             <p style="flex: 1;"></p>
         </div>
+
+        <div id="progress" style="text-align: center;font-size:12px;opacity:0.7;">
+            已学 <span id="done">0</span> 句 ・ 共 <span id="total">0</span> 句
+        </div>
+
         </div>
 
         <section id="result" class="hidden">

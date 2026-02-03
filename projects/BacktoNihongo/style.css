@@ -1,5 +1,5 @@
 body { 
-    font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif; 
+    font-family: "Helvetica Neue", "PingFang SC", sans-serif;
     background: #5a9bdc;
     color: #1a1a1a;
     line-height: 1.5;
@@ -22,6 +22,7 @@ code {
     color: #1a1a1a; 
     display: block;
 }
+
 
 section, #login, .ankiCard, #note, pre, details { 
     border: 2.5px solid #2d3436; 
@@ -63,15 +64,21 @@ input, textarea, select {
     width: 100%; 
     padding: 14px; 
     margin-bottom: 16px; 
-    border: 2.5px solid #2d3436; 
+    border: 2.5px solid #64748b; 
     border-radius: 8px; 
     box-sizing: border-box; 
     font-size: 1em; 
-    background: #fdfdfd; 
-    transition: background 0.2s; 
+    background: #f1f5f9; 
+    transition: border-color 0.2s;
 } 
 
-input:focus, textarea:focus { background: #f1f5f9; outline: none; } 
+input:focus, textarea:focus { 
+    background: #fdfdfd; 
+    outline: none; 
+    border: 2.5px solid #2d3436; 
+    }
+     
+
 
 button { 
     padding: 12px 24px; 

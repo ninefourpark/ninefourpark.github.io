@@ -12,6 +12,19 @@ const VISITOR_NAME = "momo";
 
 const storedCards = localStorage.getItem("cards");
 
+function updateStats() {
+  const allCards = JSON.parse(localStorage.getItem("cards")) || [];
+
+  const activeCards = allCards.filter(c => c.status !== "disabled");
+
+  const learnedCount = activeCards.filter(c =>
+    c.status === "learned" || c.status === "reviewed"
+  ).length;
+
+  document.getElementById("total").textContent = activeCards.length;
+  document.getElementById("done").textContent = learnedCount;
+}
+
 
 function login() {
   const name = document.getElementById("username").value.trim();
@@ -240,6 +253,8 @@ function nextCard() {
 }
 
 function loadCard() {
+    // 每次进入学习流程，先刷新统计
+  updateStats();
   const zhElement = document.getElementById("zh");
   const jaElement = document.getElementById("ja");
   const noteElement = document.getElementById("note");
@@ -330,6 +345,17 @@ function submitAnswer() {
   saveStatus();
   saveCards();
 
+  // 更新已学会计数
+  let learnedCount = Number(localStorage.getItem("learned")) || 0;
+
+  if (currentCard.status === "new") {
+    currentCard.status = "learned";
+    learnedCount += 1;
+    localStorage.setItem("learned", learnedCount);
+  } else if (currentCard.status === "learned") {
+    currentCard.status = "reviewed";
+  }
+  updateStats();
 
   // 显示笔记（如果有）
   if (currentCard.note) {
@@ -377,6 +403,7 @@ function disableCard() {
   currentCard.status = "disabled";
   saveStatus();
   saveCards();
+  updateStats();　// 更新统计数据
   loadCard();
 }
 
