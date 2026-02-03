@@ -1,0 +1,29 @@
+[
+  {
+    "id": "example-1",
+    "zh": "天气很好。",
+    "ja": "今日は天気がいい。",
+    "note": "基本描述句",
+    "source": "示例",
+    "status": "new",
+    "count": 0
+  },
+  {
+    "id": "example-2",
+    "zh": "我正在学习日语。",
+    "ja": "日本語を勉強しています。",
+    "note": "进行中的动作",
+    "source": "示例",
+    "status": "new",
+    "count": 0
+  },
+  {
+    "id": "example-3",
+    "zh": "这本书很有意思。",
+    "ja": "この本はとても面白いです。",
+    "note": "形容词句型",
+    "source": "示例",
+    "status": "new",
+    "count": 0
+  }
+]

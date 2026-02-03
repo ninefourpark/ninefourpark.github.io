@@ -1,5 +1,6 @@
 let cards = [];
 let currentCard = null;
+let exampleCards = [];
 
 const ALLOWED_USERS = [
   "adalin",
@@ -7,9 +8,113 @@ const ALLOWED_USERS = [
   "keoni"
 ];
 
-const VISITOR_NAME = "visitor";
+const VISITOR_NAME = "momo";
 
 const storedCards = localStorage.getItem("cards");
+
+
+function login() {
+  const name = document.getElementById("username").value.trim();
+  if (!name) return;
+
+  const isVisitor = name === VISITOR_NAME;
+  const isAllowed = ALLOWED_USERS.includes(name);
+
+  if (!isVisitor && !isAllowed) {
+    alert("该用户名未被允许使用此系统。");
+    return;
+  }
+
+  localStorage.setItem("user", name);
+  loadLoginState();
+  updateVisitorHint();
+}
+
+function logout() {
+  localStorage.removeItem("user");
+  localStorage.removeItem("googleSheetLink");
+  localStorage.removeItem("googleCardIds");
+
+  cards = [];
+  currentCard = null;
+
+  alert("已退出登录");
+  loadLoginState();
+}
+
+function loadLoginState() {
+  const user = localStorage.getItem("user");
+  const loginSection = document.getElementById("login");
+  const appSection = document.getElementById("app");
+  const logoutBtn = document.getElementById("logoutBtn");
+
+  if (user) {
+    loginSection.classList.add("hidden");
+    appSection.classList.remove("hidden");
+    logoutBtn.classList.remove("hidden");
+    const isVisitor = user === VISITOR_NAME;
+    const label = isVisitor ? "欢迎，momo（访客模式）" : `欢迎，${user}`;
+    document.getElementById("userLabel").textContent = label;
+    loadCard();
+  } else {
+    loginSection.classList.remove("hidden");
+    appSection.classList.add("hidden");
+    logoutBtn.classList.add("hidden");
+  }
+}
+
+// 检查是否为访客且无卡片
+function isVisitorWithNoCards() {
+  const user = localStorage.getItem("user");
+  const cardsRaw = localStorage.getItem("cards");
+  const cards = cardsRaw ? JSON.parse(cardsRaw) : [];
+
+  return user === "momo" && cards.length === 0;
+}
+
+function useExampleCards() {
+  if (!exampleCards.length) {
+    alert("无法加载示例卡片，请稍后再试。");
+    return;
+  }
+
+  // 直接将示例卡片插入本地卡片数据
+  cards = exampleCards.map(c => ({ ...c }));
+
+  // 将示例卡片保存在 localStorage（如果需要保存）
+  saveCards();
+
+  // 更新页面，显示卡片
+  loadCard();
+
+  // 隐藏提示和按钮
+  document.getElementById("visitorHint").classList.add("hidden");
+}
+
+
+// 更新访客提示信息显示状态
+function updateVisitorHint() {
+  const hint = document.getElementById("visitorHint");
+  if (!hint) return;
+
+  if (isVisitorWithNoCards()) {
+    hint.classList.remove("hidden");
+  } else {
+    hint.classList.add("hidden");
+  }
+}
+
+function loadExampleCards() {
+  fetch('example-cards.json') 
+    .then(res => res.json())  
+    .then(data => {
+      exampleCards = data;
+    })
+    .catch(error => {
+      console.error("加载示例卡片失败：", error);
+      alert(`加载示例卡片失败，错误信息：${error.message}`);  
+    });
+}
 
 function parseCSV(text) {
   const lines = text.trim().split("\n");
@@ -33,8 +138,11 @@ function setGoogleSheetLink() {
   }
   localStorage.setItem("googleSheetLink", googleSheetLink);
   alert("Google Sheet 链接已保存！");
+  // 关键步骤：保存链接后立即调用抓取函数
+  fetchCardsFromGoogle();
 }
 
+// 从 Google Sheet 抓取卡片数据
 function fetchCardsFromGoogle(merge = false) {
   const googleSheetLink = localStorage.getItem("googleSheetLink");
   if (!googleSheetLink) {
@@ -96,16 +204,22 @@ function mergeCards(newCards) {
   return Array.from(mergedMap.values());
 }
 
+// 初始化时加载卡片数据
 if (storedCards) {
   cards = JSON.parse(storedCards);
   loadCard();
 } else {
-  fetchCardsFromGoogle();
+  // 只有当程序在本地既找不到卡片，却又能找到有效的链接时，才让它自动去下载数据
+  const googleSheetLink = localStorage.getItem("googleSheetLink");
+  if (googleSheetLink) {
+    fetchCardsFromGoogle();
+  }
 }
 
 // 「刷新卡片」按钮
 function refreshCards() {
   fetchCardsFromGoogle(true);
+  updateVisitorHint();
 }
 
 function saveStatus() {
@@ -124,30 +238,6 @@ function nextCard() {
   currentCard = null;
   loadCard();
 }
-
-
-function login() {
-  const name = document.getElementById("username").value.trim();
-  if (!name) return;
-
-  const isVisitor = name === VISITOR_NAME;
-  const isAllowed = ALLOWED_USERS.includes(name);
-
-  if (!isVisitor && !isAllowed) {
-    alert("该用户名未被允许使用此系统。");
-    return;
-  }
-
-  localStorage.setItem("user", name);
-  document.getElementById("login").classList.add("hidden");
-  document.getElementById("app").classList.remove("hidden");
-
-  const label = isVisitor ? "使用者：visitor（体验模式）" : `使用者：${name}`;
-  document.getElementById("userLabel").textContent = label;
-
-  loadCard();
-}
-
 
 function loadCard() {
   const zhElement = document.getElementById("zh");
@@ -169,11 +259,11 @@ function loadCard() {
   document.getElementById("restartReviewBtn").classList.add("hidden");
 
 
-// 从 localStorage 获取 cards 数据
+ // 从 localStorage 获取 cards 数据
   cards = JSON.parse(localStorage.getItem("cards")) || [];
   
   if (cards.length === 0) {
-    alert("您的浏览器储存里还没有存放任何卡片。请点击右上角的“刷新卡片”按钮，将您 Google 表格中的卡片导入至浏览器存储。");
+    alert("新朋友，欢迎光临！");
     return;
   }
 
@@ -189,9 +279,9 @@ function loadCard() {
     let message = "";
 
     if (mode === "new") {
-      message = "所有新卡已经练习完。";
+      message = "已经练习完所有新卡。";
     } else if (mode === "learned") {
-  message = "所有旧卡已完成本轮复习。";
+  message = "已复习完所有旧卡。";
   document.getElementById("restartReviewBtn")
     .classList.remove("hidden");
 } else {
@@ -251,17 +341,17 @@ function submitAnswer() {
   const text =
 `您好，請您擔任我的日語老師，協助我學習日語的語法與詞語搭配。流程如下：我將提供原文日文以及我根據中文翻譯所做的日文回譯，請您對比【我的回譯】與【日文原文】，指出其中的差異。請您評估【我的回譯】是否「自然但略顯突兀」、「不太自然」、「有語法錯誤」或「完全正確但表達不同」。
 
-【我的回译】
-${userAnswer}
-
 【日文原文】
-${currentCard.ja}`;
+${currentCard.ja}
 
-document.getElementById("ja").textContent = currentCard.ja;
+【我的回译】
+${userAnswer}`;
+
+document.getElementById("ja").innerHTML = '<span style="font-weight: normal; color: #666;">原文：</span>' + currentCard.ja;
 document.getElementById("ja").classList.remove("hidden");
 
 document.getElementById("resultText").textContent = text;
-  document.getElementById("result").classList.remove("hidden");
+document.getElementById("result").classList.remove("hidden");
 }
 
 
@@ -302,8 +392,8 @@ if (
 
   const label =
     savedUser === VISITOR_NAME
-      ? "使用者：visitor（体验模式）"
-      : `使用者：${savedUser}`;
+      ? "欢迎，momo（访客模式）"
+      : `欢迎，${savedUser}`;
 
   document.getElementById("userLabel").textContent = label;
   loadCard();
@@ -368,10 +458,10 @@ function generateId(length = 8) {
 }
 
 function addCard() {
-    if (localStorage.getItem("user") === "visitor") {
-    alert("体验模式下无法使用此功能。");
-    return;
-    }
+  //  if (localStorage.getItem("user") === "visitor") {
+  //  alert("体验模式下无法使用此功能。");
+  //  return;
+  //  }
 
 
   const ja = document.getElementById("newJa").value.trim();
@@ -403,6 +493,8 @@ const source = document.getElementById("newSource").value.trim();
   loadCard();
 }
 
+
+// 复制新增的卡片到剪贴板，方便粘贴到 Google 表格
 function copyNewCards() {
   const googleIds =
     JSON.parse(localStorage.getItem("googleCardIds") || "[]");
@@ -416,12 +508,11 @@ function copyNewCards() {
     return;
   }
 
-  const headers = ["id", "zh", "ja", "note", "source"];
   const rows = newCards.map(c =>
-    [c.id, c.zh, c.ja, c.note, c.source].join(",")
+    [c.id, c.zh, c.ja, c.note, c.source].join("\t")
   );
 
-  const csvText = headers.join(",") + "\n" + rows.join("\n");
+  const csvText = rows.join("\n");
 
   navigator.clipboard.writeText(csvText).then(() => {
     alert(`已复制 ${newCards.length} 张卡片，可直接粘贴到 Google 表格。`);
@@ -479,11 +570,6 @@ document.addEventListener("keydown", (e) => {
 
 
 function exportToClipboard() {
-    if (localStorage.getItem("user") === "visitor") {
-    alert("体验模式下无法使用此功能。");
-    return;
-    }
-
   const headers = ["id", "zh", "ja", "note", "source", "status", "count"];
 
   const rows = cards.map(c => [
@@ -502,12 +588,8 @@ function exportToClipboard() {
     alert("已复制，可直接粘贴到 Google Sheet。");
   });
 }
-function importFromClipboard() {
-    if (localStorage.getItem("user") === "visitor") {
-    alert("体验模式下无法使用此功能。");
-    return;
-    }
 
+function importFromClipboard() {
   const text = document.getElementById("importArea").value.trim();
   if (!text) return;
 
@@ -544,3 +626,4 @@ function importFromClipboard() {
   alert("导入完成。");
 }
 
+loadExampleCards(); 

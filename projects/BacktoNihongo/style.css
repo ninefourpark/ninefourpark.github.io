@@ -9,13 +9,17 @@ body {
     justify-content: center;
 } 
 
+code { 
+    font-family: "Cascadia Mono", "Segoe UI Mono", "Liberation Mono", Menlo, Monaco, Consolas,"Noto Sans TC", "Noto Sans SC",monospace;
+    background: #eee; padding: 2px 5px; border-radius: 4px;
+}
+
 .container { width: 100%; max-width: 520px; } 
 
 .hidden { display: none !important; } 
 
 #userLabel { 
     color: #1a1a1a; 
-    margin-bottom: 6px; 
     display: block;
 }
 
@@ -32,7 +36,7 @@ section, #login, .ankiCard, #note, pre, details {
     padding: 10px;
     margin-bottom: 0;
 }
-#statusMessage { 
+#statusMessage, #visitorHint { 
     margin-bottom: 16px; 
     padding: 12px; 
     border: 2.5px solid #bb3e03; 
@@ -95,7 +99,8 @@ button[onclick="restartReview()"] {
     background: #cf8908; 
 }
 button[onclick="disableCard()"],
-button[onclick="importFromClipboard()"] { 
+button[onclick="importFromClipboard()"],
+button[onclick="logout()"] { 
     background: #bb3e03;
 }
 
@@ -108,7 +113,8 @@ button[onclick="restartReview()"]:hover {
     background: #eab308; 
 }
 button[onclick="disableCard()"]:hover,
-button[onclick="importFromClipboard()"]:hover { 
+button[onclick="importFromClipboard()"]:hover,
+button[onclick="logout()"]:hover { 
     background: #dc2626;
 }
 
@@ -138,7 +144,7 @@ button[onclick="exportToClipboard()"] {
     padding-block: 0px;
 }
 
-#note { background: #fefce8; border-color: #eab308; color: #854d0e; font-size: 0.95em; } 
+#note, .guide { background: #fefce8; border-color: #eab308; color: #854d0e; font-size: 0.95em; } 
 
 pre { 
     background: #f8fafc; border: 1.5px solid #e2e8f0; white-space: pre-wrap; font-size: 0.9em; } 
