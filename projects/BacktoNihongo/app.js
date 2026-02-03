@@ -323,7 +323,7 @@ function loadCard() {
 
     // 显示来源
     if (currentCard.source) {
-        sourceElement.textContent = `来源: ${currentCard.source}`;
+        sourceElement.textContent = `${currentCard.source}`;
         sourceElement.classList.remove("hidden");
     } else {
         sourceElement.classList.add("hidden");
