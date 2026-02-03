@@ -333,10 +333,10 @@ function submitAnswer() {
 
   // 显示笔记（如果有）
   if (currentCard.note) {
-    document.getElementById("note").innerHTML =
-      currentCard.note;
+    const displayNote = currentCard.note.replace(/\r?\n/g, "<br>");
+    document.getElementById("note").innerHTML = displayNote;
     document.getElementById("note").classList.remove("hidden");
-  } 
+  }
 
   const text =
 `您好，請您擔任我的日語老師，協助我學習日語的語法與詞語搭配。流程如下：我將提供原文日文以及我根據中文翻譯所做的日文回譯，請您對比【我的回譯】與【日文原文】，指出其中的差異。請您評估【我的回譯】是否「自然但略顯突兀」、「不太自然」、「有語法錯誤」或「完全正確但表達不同」。
@@ -508,9 +508,10 @@ function copyNewCards() {
     return;
   }
 
-  const rows = newCards.map(c =>
-    [c.id, c.zh, c.ja, c.note, c.source].join("\t")
-  );
+const rows = newCards.map(c => {
+  const formattedNote = (c.note || "").replace(/\r?\n/g, "<br>");
+  return [c.id, c.zh, c.ja, formattedNote, c.source].join("\t");
+});
 
   const csvText = rows.join("\n");
 
@@ -556,8 +557,8 @@ document.addEventListener("keydown", (e) => {
     }
   }
 
-  // Ctrl + C：复制结果（只在结果显示时）
-  if (e.ctrlKey && e.key.toLowerCase() === "c") {
+  // Ctrl + shift + C：复制结果（只在结果显示时）
+  if (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === "c") {
     const resultVisible =
       !document.getElementById("result").classList.contains("hidden");
 
@@ -576,7 +577,7 @@ function exportToClipboard() {
     c.id,
     c.zh,
     c.ja,
-    c.note || "",
+    (c.note || "").replace(/\r?\n/g, "<br>"),
     c.source || "",
     c.status,
     c.count
