@@ -66,7 +66,8 @@ function switchLang(lang) {
     .querySelectorAll('[data-en], [data-zh-hans], [data-zh-hant]')
     .forEach(el => {
     let content = el.dataset[key];
-
+        
+    if (!content) content = el.dataset.zhHans;
     if (!content) content = el.dataset.en ;
     if (!content) return;
 
