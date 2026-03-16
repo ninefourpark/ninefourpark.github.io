@@ -98,13 +98,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const saved = localStorage.getItem('siteLang');
     if (saved) {
       lang = saved;
-    } else {
-      const nav = navigator.language || 'zh-Hans';
-      if (nav.startsWith('en')) lang = 'en';
-      else if (nav.startsWith('zh')) {
-        if (/TW|HK|MO|Hant/i.test(nav)) lang = 'zh-Hant';
-      }
-    }
+    } 
   } catch (e) {
     console.error("Storage error:", e);
   }
