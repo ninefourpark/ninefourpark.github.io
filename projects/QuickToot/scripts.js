@@ -67,7 +67,7 @@ function switchLang(lang) {
     .forEach(el => {
     let content = el.dataset[key];
 
-    if (!content) content = el.dataset.zhhans ;
+    if (!content) content = el.dataset.en ;
     if (!content) return;
 
     Object.keys(urls).forEach(placeholder => {
