@@ -1,0 +1,117 @@
+
+
+.content-area {
+  flex: 1;
+  max-width: 700px; /* Keeps text readable */
+}
+
+/* The Floating Sidebar */
+.sidebar-right {
+  width: 240px;
+  display: none; /* Hidden by default for mobile */
+}
+
+
+
+.notion-toc {
+  position: sticky;
+  top: 75px; /* Distance from top of screen when scrolling */
+  border-left: 1px dashed var(--border-textarea);
+  padding-left: 15px;
+}
+
+.toc-item a {
+  display: block;
+  font-size: 14px;
+  color: #37352f;
+  text-decoration: none;
+  padding: 4px 0;
+  transition: color 0.2s;
+}
+
+.toc-item a:hover {
+  color: var(--active-bg); /* Subtle blue like Notion links */
+}
+
+
+.mobile-toc-accordion {
+  background: #f7f6f3; /* Notion's subtle gray background */
+  padding: 12px;
+  border-radius: 4px;
+  margin-bottom: 20px;
+}
+
+.mobile-toc-accordion summary {
+  font-weight: 600;
+  cursor: pointer;
+  outline: none;
+}
+
+@media (min-width: 1024px) {
+  .sidebar-right {
+    display: block !important;
+    position: sticky;
+    top: 80px; 
+    width: 250px;
+    height: fit-content;
+  }
+  .mobile-toc-accordion {
+    display: none; /* Hide accordion on PC */
+  }
+  .page-wrapper {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+  }
+}
+
+/* Hide the desktop sidebar on mobile */
+@media (max-width: 1023px) {
+  .sidebar-right {
+    display: none;
+  }
+  .mobile-toc-accordion {
+    display: block;
+    margin: 20px 0;
+  }
+}
+
+/* Top Navigation Bar */
+.top-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 20px;
+  border-bottom: 1px solid #efefef;
+  background: #f7f6f3;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+/* Language Switcher Styling */
+.lang-switch {
+  display: flex;
+  gap: 8px;
+}
+
+.lang-switch button {
+    padding: 0.2rem 0.3rem;
+    font-size: .8em;
+    border: 2px solid var(--border-textarea);
+    box-shadow: 0 4px 0 var(--border-textarea);
+    cursor: pointer;
+    color: var(--text-muted);
+}
+
+.lang-switch button:hover {
+    border: 2px solid var(--border-primary);
+}
+
+/* On Mobile: Keep it compact */
+@media (max-width: 600px) {
+  .lang-switch button {
+    padding: 6px 10px; /* Larger tap target for fingers */
+    font-size: 13px;
+  }
+}

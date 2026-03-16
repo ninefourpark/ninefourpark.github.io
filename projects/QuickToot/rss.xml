@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>QuickToot 更新日志</title>
+    <link>https://example.com/</link>
+    <description>QuickToot 插件的新版本发布与更新说明</description>
+    <language>zh-cn</language>
+    <lastBuildDate>Sat, 01 Feb 2026 00:00:00 +0800</lastBuildDate>
+
+    <item>
+      <title>v1.0 · 首个可稳定使用的版本</title>
+      <link>https://ninefourpark.github.io/projects/quicktoot/changlog/</link>
+      <guid>https://ninefourpark.github.io/projects/quicktoot/changlog/#v1.0</guid>
+      <pubDate>Sat, 01 Feb 2026 00:00:00 +0800</pubDate>
+      <description><![CDATA[
+        <ul>
+            <li>首个可稳定使用的版本。</li>
+            <li>支持基于 Mastodon 的习惯打卡与自动发嘟。</li>
+            <li>每个话题可独立设置模板与绑定网页。</li>
+            <li>同一话题的打卡可自动形成串文。</li>
+            <li>支持全局快捷键与高频习惯快捷键直发。</li>
+            <li>支持附图。</li>
+            <li>界面与交互已整理。</li>
+        </ul>
+            <p class="download">
+            <a href="https://github.com/ninefourpark/quicktoot/releases">下载此版本</a>
+            </p>
+      ]]></description>
+    </item>
+
+  </channel>
+</rss>

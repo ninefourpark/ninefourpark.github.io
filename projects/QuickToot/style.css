@@ -1,0 +1,483 @@
+
+:root {
+  /* Colors - Core Palette */
+  --bg-main: #fcfafc;
+  --text-main: #1a1a1a;
+  --text-muted: #4a4a4a;
+  --border-primary: #2d3436;
+
+  /* Colors - Form & UI */
+  --border-textarea: #b4b6cb;
+  --btn-bg: #eeeeee;
+  --btn-hover-bg: #e6e6e6;
+  --hover-bg: #e0e3ff;
+  --focus-outline: #9ea2ff;
+
+  /* Colors - Interactive States */
+  --active-text: #f3f3f3;
+  --active-bg: #5f55ec;
+
+  /* Colors - Status & Alerts */
+  --status-success: #00a63e;
+  --status-warning: #ffdd57;
+  --status-error: #b71c1c;
+  --status-error-hover: #e03e3e;
+  --status-error-text: #ffffff;
+  --status-info: #ff8431;
+
+  /* Spacing System (8px base) */
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 12px;
+  --space-lg: 16px;
+  --space-xl: 20px;
+  --space-2xl: 24px;
+  --space-3xl: 32px;
+  --space-4xl: 40px;
+
+  /* Responsive Breakpoints */
+  --bp-sm: 480px;
+  --bp-md: 768px;
+  --bp-lg: 1024px;
+
+  /* Typography */
+  --font-main: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "PingFang SC", "Hiragino Sans", "Microsoft YaHei", "Microsoft JhengHei", sans-serif;
+  --font-mono: "SF Mono", "Roboto Mono", "Source Code Pro", Menlo, Consolas, "Hiragino Sans GB", "Microsoft YaHei", "Hiragino Kaku Gothic ProN", "Meiryo", "Noto Sans Mono CJK SC", monospace;
+
+  /* Line Heights */
+  --lh-tight: 1.3;
+  --lh-normal: 1.6;
+  --lh-relaxed: 1.8;
+
+  /* Border Radius */
+  --radius-sm: 3px;
+  --radius-md: 6px;
+  --radius-lg: 999px;
+
+  /* Transitions */
+  --transition-fast: 0.2s ease;
+  --transition-smooth: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Noto Sans SC", "Noto Sans TC", sans-serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1.5;
+    background: #fafafa;
+    color: #222;
+}
+
+nav a {
+    margin-left: 1rem;
+    text-decoration: none;
+    color: var(--active-bg);
+}
+
+main {
+    padding: 1rem;
+    max-width: 700px;
+    margin: auto;
+}
+h1 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+h2 {
+    margin-top: 1.5rem;
+}
+
+h2,
+h3,
+section {
+    scroll-margin-top: 4rem;
+}
+
+ul, ol {
+    padding-left: 1.2rem;
+}
+ol li::marker,
+ul li::marker { 
+  color: var(--active-bg); 
+}
+a:link {
+  color: var(--active-bg); 
+  text-decoration: underline;  
+  text-decoration-thickness: 0.08em;
+  text-underline-offset: 0.15em;   
+  transition: text-decoration 200ms ease, color 200ms ease;
+}
+
+a:visited {
+  color: #8275ff;
+}
+
+a:hover {
+  color: #8275ff;
+  text-decoration-thickness: 0.16em; 
+}
+
+
+code {
+  font-family: var(--font-mono);
+  background-color: var(--btn-bg);
+  color: var(--text-mutedr);
+  padding: 0.2em 0.4em;
+  border-radius: 0.4rem;
+  font-size: 0.95em;
+  border: 1px solid var(--border-textarea);
+  box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+}
+
+section#demo {
+    margin-top: 2.5rem;
+}
+#faq p {
+    margin-top: 0;
+    margin-bottom: 1.25rem;
+}
+
+
+
+/* 页面开头 */
+
+.header-center-box {
+  text-align: center;
+  padding: 1rem;
+}
+
+.header-center {
+  display: inline-block;
+}
+.header-center .icon {
+  height: 64px;
+  border-radius: var(--radius-md);
+}
+.header-center h1 {
+  margin: 0.3rem 0 0;
+}
+.header-center .slogan {
+  margin: 0;
+  color: var(--active-bg);
+  font-weight: 500;
+}
+
+/* 图片画廊 */
+
+.masonry {
+  display: grid;                  
+  grid-template-columns: 1fr 1fr; 
+  gap: 1.5rem;                   
+}
+
+/* 手机适配 */
+@media (max-width: 600px) {
+  .masonry {
+    grid-template-columns: 1fr; 
+  }
+
+  .masonry-item .caption {
+    font-size: 0.95rem;
+    padding: 0.5rem;
+  }
+  .masonry-item .caption p:first-child {
+    font-size: 1rem;
+  }
+  .masonry-item .caption p:last-child {
+    font-size: 0.9rem;
+  }
+}
+
+.masonry-item {
+  display: inline-block;
+  width: 100%;
+  margin-bottom: 1.5rem;
+  border: 2px solid var(--border-primary); 
+  border-radius: 8px; 
+  overflow: hidden; /* 确保 caption 不跑出圆角 */
+  background: #fff; /* 可选背景 */
+}
+.masonry-item img {
+  width: 100%;
+  display: block;
+  cursor: zoom-in;
+  transition: transform 0.2s;
+  border-top: 1px solid var(--border-primary);
+  border-bottom: 1px solid var(--border-primary);
+}
+
+.masonry-item img:hover { transform: scale(1.02); }
+
+/* Caption 容器 */
+.masonry-item .caption {
+  padding: 0.6rem 0.75rem;
+  font-size: 0.95rem;
+  color: #222;
+  line-height: 1.4;
+}
+
+
+/* 标题和说明分层 */
+.masonry-item .caption p:first-child {
+  font-weight: 600; 
+  font-size: 1.2rem; 
+  margin-bottom: 0.25rem;
+  color: var(--active-bg);
+}
+
+.masonry-item .caption p:last-child {
+  font-weight: 400; 
+  font-size: 1rem;
+}
+
+
+/* 放大图片画廊 */
+#img-modal {
+  display: none;
+  position: fixed;
+  top:0; left:0; width:100%; height:100%;
+  background: rgba(0,0,0,0.9);
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  flex-direction: column;
+}
+#img-modal img {
+  max-width: 90%;
+  max-height: 80%;
+  border-radius: 6px;
+}
+#img-modal .caption {
+  margin-top: 0.5rem;
+  color: #eee;
+  font-size: 0.9rem;
+  text-align: center;
+  padding-inline: 0.8em;
+  max-width: 70%;
+}
+#img-modal .arrow {
+  position: absolute;
+  top: 50%;
+  font-size: 2rem;
+  color: #fff;
+  cursor: pointer;
+  user-select: none;
+  padding: 0 0.5rem;
+}
+#img-modal .arrow.left { left: 0.5rem; }
+#img-modal .arrow.right { right: 0.5rem; }
+
+
+/* 注释 */
+
+.note {
+  color: #999;
+  font-size: 0.85rem;
+  margin: 0.5rem 0;
+}
+.note::before {
+  content: "/*";
+  display: inline-block;
+  height: 18px;
+  margin-right: .3rem;
+}
+.note::after {
+  content: "*/";
+  display: inline-block;
+  height: 18px;
+  margin-left: .3rem;
+}
+
+
+/* 符号 */
+
+section#beforeatry ul.supportOrNot {
+  list-style: none;
+}
+
+/* ==============================
+   BUTTONS
+============================== */
+button {
+  cursor: pointer;
+  background-color: var(--btn-bg);
+  color: var(--text-main);
+  font-weight: 600;
+  font-size: 1rem;
+  padding: var(--space-sm) var(--space-md);
+  line-height: var(--lh-tight);
+  border: 2px solid var(--border-primary);
+  border-radius: var(--radius-md);
+  box-shadow: 0 4px 0 var(--border-primary);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+button:hover {
+  background-color: var(--btn-hover-bg);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 0 var(--border-primary);
+}
+
+button:active {
+  transform: translateY(2px);
+  box-shadow: 0 2px 0 var(--border-primary);
+  transition: none;
+}
+
+button:focus-visible {
+  background-color: var(--btn-hover-bg);
+  box-shadow: 0 0 0 3px var(--focus-outline);
+  transform: translateY(-2px);
+}
+
+/* Header Actions Buttons*/
+
+.header-actions {
+  margin-top: var(--space-md);
+  display: flex;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.header-actions .headerBtn {
+  display: flex;
+  align-items: center;
+  padding: var(--space-xs) var(--space-md);
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+  background-color: var(--btn-bg);
+  color: var(--text-main);
+  border: 2px solid var(--border-primary);
+  border-radius: var(--radius-md);
+  box-shadow: 0 4px 0 var(--border-primary);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+  cursor: pointer;
+}
+
+.header-actions .headerBtn:hover {
+  background-color: var(--btn-hover-bg);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 0 var(--border-primary);
+}
+
+.header-actions .headerBtn:active {
+  transform: translateY(2px);
+  box-shadow: 0 2px 0 var(--border-primary);
+  transition: none;
+}
+
+
+/* Button Icon Base Styles */
+.githubBtn::before,
+.installBtn::before,
+.changlogBtn::before,
+.backHomeBtn::before {
+  content: "";
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  margin-right: var(--space-xs);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+.githubBtn::before {
+  background-image: url('data:image/svg+xml,%3Csvg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/%3E%3C/svg%3E');
+}
+
+.installBtn::before {
+  background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"%3E%3Cpath d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-2" /%3E%3Cpath d="M7 11l5 5l5 -5" /%3E%3Cpath d="M12 4l0 12" /%3E%3C/svg%3E');
+}
+
+.changlogBtn::before {
+  background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"%3E%3Cpath d="m14 18 4-4 4 4" /%3E%3Cpath d="M16 2v4" /%3E%3Cpath d="M18 22v-8" /%3E%3Cpath d="M21 11.343V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h9" /%3E%3Cpath d="M3 10h18" /%3E%3Cpath d="M8 2v4" /%3E%3C/svg%3E');
+}
+
+.backHomeBtn::before {
+  background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"%3E%3Cpath d="M5 12l-2 0l9 -9l9 9l-2 0" /%3E%3Cpath d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" /%3E%3Cpath d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" /%3E%3C/svg%3E');
+}
+
+
+/* keyboard guide section */
+
+#keyboard-guide {
+  margin-top: 40px;
+}
+
+.shortcut-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.shortcut-item {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  align-items: start;
+  gap: 20px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #efefef;
+}
+
+/* Style for the Keyboard keys */
+kbd {
+  background-color: #f7f6f3;
+  border: 1px solid #e0e0e0;
+  border-radius: 3px;
+  box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+  color: #37352f;
+  display: inline-block;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.85em;
+  font-weight: 600;
+  line-height: 1;
+  padding: 3px 5px;
+  white-space: nowrap;
+}
+
+.shortcut-item p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #37352f;
+}
+
+.sub-text {
+  font-size: 12px !important;
+  color: #73726e !important;
+  margin-top: 8px !important;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 600px) {
+  .shortcut-item {
+    grid-template-columns: 1fr; /* Stack vertically on phones */
+    gap: 8px;
+  }
+  
+  .keys {
+    margin-bottom: 4px;
+  }
+}
+
+
+footer {
+    text-align: center;
+    padding: 1rem;
+    font-size: 0.85rem;
+    color: #555;
+    border-top: 1px solid #efefef;
+}
+
+.license-text p {
+  margin: 0 0 8px 0;
+  opacity: 0.8;
+}

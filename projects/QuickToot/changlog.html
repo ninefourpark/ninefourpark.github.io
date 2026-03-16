@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="container.css">
+    <link rel="icon" href="img/icon.png" type="image/png">
+    <link rel="alternate" type="application/rss+xml" title="RSS" href="/rss.xml">
+    <script src="scripts.js" defer></script>
+    <script src="container.js"></script>
+<title>QuickToot</title>
+</head>
+
+<body>
+
+<header class="top-nav">
+  <div class="logo">QuickToot > Changelog</div>
+  <div class="lang-switch">
+    <button onclick="switchLang('en')">EN</button>
+    <button onclick="switchLang('zh-Hant')">繁</button>
+    <button onclick="switchLang('zh-Hans')">简</button>
+  </div>
+</header>
+
+<div class="page-wrapper">
+<main class="content-area">
+
+  <!-- 窄屏目录 -->
+<details class="mobile-toc-accordion" id="toc-mobile-container">
+  <summary data-en="Table of Contents" data-zh-Hant="目錄" data-zh-Hans="目录"></summary>
+  <div class="notion-toc auto-toc"></div>
+</details>
+
+<div class="header-center-box">
+    <div class="header-center">
+      <img src="img/icon.png" alt="QuickToot" class="icon">
+      <h1>QuickToot</h1>
+      <p class="slogan"
+          data-en="For tooting, not looting your time."
+          data-zh-Hant="Mastodon 快速發嘟工具 ・ 想嘟就嘟"
+          data-zh-Hans="Mastodon 快捷发嘟工具 ・ 想嘟就嘟"></p>
+    </div>
+    <div class="header-actions">
+        <a class="headerBtn backHomeBtn" href="index.html" 
+          data-en="Home"
+          data-zh-Hant="返回主頁"
+          data-zh-Hans="返回主页">返回主页</a>
+        <a class="headerBtn githubBtn" 
+          href="https://github.com/ninefourpark/QuickToot/"  target="_blank">GitHub</a>
+    </div>
+</div>
+
+<div id="main-content">
+
+<section class="rssrecommand">
+  <h2 id="rssrecommand-title"
+      data-en="What's Next?"
+      data-zh-Hant="後續更新與計畫"
+      data-zh-Hans="后续更新与计划">后续更新与计划</h2>
+  
+  <p data-en="When a new version drops, I'll post the changelog here. For now, I'm focusing on squashing bugs and smoothing out the experience. "
+     data-zh-Hant="新版本發布時，我會將更新紀錄放在這裡。目前主要修 Bug 以及優化使用者體驗。"
+     data-zh-Hans="新版本发布时，我会将更新日志记录在这里。目前主要是修 Bug 和优化用户体验。">
+  </p>
+
+  <p data-en="You can subscribe via <a href='{{RSS_URL}}' target='_blank'>RSS</a> to get a ping whenever there's an update."
+     data-zh-Hant="您可以透過 <a href='{{RSS_URL}}' target='_blank'>RSS</a> 訂閱更新，這樣在有新版本時就能第一時間收到通知。"
+     data-zh-Hans="你可以通过 <a href='{{RSS_URL}}' target='_blank'>RSS</a> 订阅更新，这样就能在有新版本发布时获取提醒。">
+  </p>
+
+
+  <p data-en="QuickToot is a one-person project, built with care from my room and the nearby park."
+     data-zh-Hant="QuickToot 是由我獨自開發的小專案，誕生於我的房間和附近的公園。"
+     data-zh-Hans="QuickToot 是由我独自开发的小项目，诞生于我的房间和附近的公园。">
+  </p>
+
+</section>
+
+
+<h2 data-en="What's New?" 
+    data-zh-Hant="更新日誌" 
+    data-zh-Hans="更新日志">更新日志</h2>
+<p class="note"
+   data-en="Technically a changelog, but mostly just me documenting the chaos."
+   data-zh-Hant="寫 Bug 日志"
+   data-zh-Hans="写 Bug 日誌">
+</p>
+
+<section class="release">
+  <h3 id="v1.0">
+    v1.0
+    <time datetime="2026-03-16">2026-03-16</time>
+  </h3>
+  <ul data-en="<li>First stable release! Ready for daily use.</li>
+               <li>Hit your shortcut and toot instantly—no matter what page you're on.</li>
+               <li>Topic-specific templates and webpage binding.</li>
+               <li>Auto-threading for posts under the same topic.</li>
+               <li>Global shortcuts and one-click posting for your frequent topics.</li>
+               <li>Image attachment support.</li>
+               <li>Polished UI and smoother interactions.</li>"
+      data-zh-Hant="<li>首個穩定版本。</li>
+                    <li>在任何網頁上按下快速鍵，立刻發嘟。</li>
+                    <li>各話題可獨立設定範本與連結網頁。</li>
+                    <li>相同話題的嘟文會自動串接。</li>
+                    <li>支援全域快捷鍵與常用話題一鍵直發。</li>
+                    <li>支援圖片附件。</li>
+                    <li>介面與交互邏輯優化。</li>"
+      data-zh-Hans="<li>首个稳定版本。</li>
+                    <li>在任何网页上按下快捷键，立刻发嘟。</li>
+                    <li>各话题可独立设置模板与绑定网页。</li>
+                    <li>相同话题自动形成串文。</li>
+                    <li>支持全局快捷键与高频话题快捷键直发。</li>
+                    <li>支持图片附件。</li>
+                    <li>界面与交互逻辑优化。</li>">
+  </ul>
+  <p class="download">
+    <a href="{{GITHUB_RELEASE_URL}}" 
+       data-en="Download this version" 
+       data-zh-Hant="下載此版本" 
+       data-zh-Hans="下载此版本">下载此版本</a>
+  </p>
+</section>
+
+
+<section class="release">
+  <h3 id="v0.4">
+    v0.4
+    <time datetime="2026-02-01">2026-02-01</time>
+  </h3>
+  <ul data-en="<li>Fixed: Prompt for instance URL when invalid.</li>
+               <li>Fixed: Bug where dedicated templates couldn't be empty.</li>
+               <li>Fixed: Small UI glitches in the thread composer.</li>
+               <li>Cleaned up keyboard focus logic.</li>"
+      data-zh-Hant="<li>修復：執行體網址無效時提示使用者填寫。</li>
+                    <li>修復：話題專屬範本無法留空的 Bug。</li>
+                    <li>修復：串文編輯介面的一些小問題。</li>
+                    <li>整理鍵盤聚焦邏輯。</li>"
+      data-zh-Hans="<li>修复：实例地址无效时提示用户填写。</li>
+                    <li>修复：话题专属模板无法留空的 Bug。</li>
+                    <li>修复：串文编写界面的一些小问题。</li>
+                    <li>整理键盘聚焦逻辑。</li>">
+  </ul>
+</section>
+
+<section class="release">
+  <h3 id="v0.3">
+    v0.3
+    <time datetime="2026-01-25">2026-01-25</time>
+  </h3>
+  <ul data-en="<li>Disabled all @mentions (staying lean!).</li>
+               <li>Support for preset post visibility.</li>
+               <li>Templates can now be left blank.</li>
+               <li>Added support for image attachments.</li>
+               <li>Fixed: Template issues after switching UI language.</li>
+               <li>Fixed: Thread posting issues and data import errors.</li>"
+      data-zh-Hant="<li>全面禁用 @ 提及功能。</li>
+                    <li>支援預設嘟文可見性。</li>
+                    <li>範本允許為空。</li>
+                    <li>支援嘟文附圖。</li>
+                    <li>修復：切換介面語言後範本功能失效的問題。</li>
+                    <li>修復：無法發佈串文及匯入資料異常。</li>"
+      data-zh-Hans="<li>全面禁用 @ 提及功能。</li>
+                    <li>支持预设嘟文可见性。</li>
+                    <li>模板允许为空。</li>
+                    <li>支持嘟文附图。</li>
+                    <li>修复：切换语言后模板功能失效的问题。</li>
+                    <li>修复：无法发布串文及导入数据异常。</li>">
+  </ul>
+</section>
+
+<section class="release">
+  <h3 id="v0.2">
+    v0.2
+    <time datetime="2026-01-20">2026-01-20</time>
+  </h3>
+  <ul>
+    <li>支持“同一习惯打卡形成串文”，同一习惯的嘟文会自动接在同一串下。</li>
+    <li>已绑定串文的习惯显示状态徽章。</li>
+    <li>新增键盘操作：</li>
+    <ul>
+      <li>支持全局快捷键打开插件面板（默认 Ctrl + Shift + Q）。</li>
+      <li>支持 3 个高频习惯的直发快捷键。</li>
+      <li>习惯列表支持键盘选择与重新排序。</li>
+      <li>嘟文编辑窗口支持 Shift + Enter 发送。</li>
+    </ul>
+    <li>增加了数据导出与导入功能。</li>
+    <li>改正了界面上的繁简中英混排和不是人话的地方。并给一些功能添加了提示信息（hint）。</li>
+    <li>修复：<ul>
+        <li>用户更改实例地址之后，串文功能卡死；</li>
+        <li>检测到缺少令牌时，弹不出OAuth 授权窗口；</li>
+        <li>在受限页面（PDF 预览、起始页）下无法触发写嘟窗口；</li>
+        <li>弹出窗口（Popup）中打开 modal 时高度没有变化导致无法点击下方的 关闭 按钮。</li>
+    </ul></li>
+  </ul>
+</section>
+
+<section class="release">
+  <h3 id="v0.1">
+    v0.1
+    <time datetime="2026-01-02">2026-01-02</time>
+  </h3>
+  <ul>
+    <li>基于 Mastodon 的习惯打卡插件，支持创建 1–10 个习惯。</li>
+    <li>点击复选框完成习惯，生成打卡嘟文。</li>
+    <li>模板中可以用占位符插入最近 14 天的打卡热力图。</li>
+    <li>每个习惯可绑定一个网页链接。</li>
+    <li>支持为习惯设置自定义快捷键。</li>
+    <li>快捷键可直接打开链接或打卡。</li>
+  </ul>
+</section>
+
+</div>
+</main>
+
+<!-- 宽屏目录 -->
+<aside class="sidebar-right"> 
+  <div class="notion-toc auto-toc"></div> 
+</aside>
+
+</div>
+
+<footer class="site-footer">
+  <div>
+    <p data-en="QuickToot ・ For tooting, not looting your time.🐘"
+       data-zh-Hant="QuickToot ・ 想嘟就嘟 🐘"
+       data-zh-Hans="QuickToot ・ 想嘟就嘟 🐘"></p>
+  </div>
+  <div class="license-text">
+    <p data-en="This project is open source under <a href='https://www.gnu.org/licenses/agpl-3.0.html' target='_blank' rel='noopener'>the GNU AGPLv3 license</a>."
+       data-zh-Hant="依據 <a href='https://www.gnu.org/licenses/agpl-3.0.html' target='_blank' rel='noopener'>GNU AGPLv3</a> 許可協議開源。"
+       data-zh-Hans="依据 <a href='https://www.gnu.org/licenses/agpl-3.0.html' target='_blank' rel='noopener'>GNU AGPLv3</a> 许可协议开源。"></p>
+  </div>
+</footer>
+
+</body>
+</html>

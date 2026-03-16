@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="container.css">
+    <link rel="icon" href="img/icon.png" type="image/png">
+    <link rel="alternate" type="application/rss+xml" title="RSS" href="/rss.xml">
+    <script src="scripts.js" defer></script>
+    <script src="container.js"></script>
+    <title>QuickToot</title>
+</head>
+
+<body>
+
+
+<header class="top-nav">
+  <div class="logo">QuickToot</div>
+  <div class="lang-switch">
+    <button onclick="switchLang('en')">EN</button>
+    <button onclick="switchLang('zh-Hant')">繁</button>
+    <button onclick="switchLang('zh-Hans')">简</button>
+  </div>
+</header>
+
+
+<div class="page-wrapper">
+<main class="content-area">
+
+<!-- 窄屏目录 -->
+<details class="mobile-toc-accordion" id="toc-mobile-container">
+  <summary data-en="Table of Contents" data-zh-Hant="目錄" data-zh-Hans="目录"></summary>
+  <div class="notion-toc auto-toc"></div>
+</details>
+
+<div class="header-center-box">
+    <div class="header-center">
+      <img src="img/icon.png" alt="QuickToot" class="icon">
+      <h1>QuickToot</h1>
+      <p class="slogan"
+          data-en="For tooting, not looting your time."
+          data-zh-Hant="Mastodon 快速發嘟工具 ・ 想嘟就嘟"
+          data-zh-Hans="Mastodon 快捷发嘟工具 ・ 想嘟就嘟"></p>
+    </div>
+    <div class="header-actions">
+        <a class="headerBtn changlogBtn" href="changlog.html" 
+          data-en="What's New"
+          data-zh-Hant="更新日誌"
+          data-zh-Hans="更新日志">更新日志</a>
+        <a class="headerBtn installBtn" href="#install"
+          data-en="Install Guide"
+          data-zh-Hant="安裝指南"
+          data-zh-Hans="安装指南">安装指南</a>
+        <a class="headerBtn githubBtn" 
+          href="https://github.com/ninefourpark/QuickToot/"  target="_blank">GitHub</a>
+    </div>
+</div>
+
+<section id="intro">
+  <p data-en='QuickToot is a browser extension for when you <strong>want to post, not scroll</strong>. Save your Mastodon timeline for later.🐘'
+      data-zh-Hant="
+      QuickToot 是一款 為 Mastodon 使用者設計的 瀏覽器外掛，解決「<strong>只想發個嘟，結果刷了半小時時間線</strong>」的痛點。🐘"
+      data-zh-Hans="
+      QuickToot 是一款 为 Mastodon 用户设计的 浏览器插件，解决「<strong>只想发个嘟，结果刷了半小时时间线</strong>」的痛点。🐘"></p>
+</section>
+
+<section id="features">
+    <ul>
+    <li data-en="
+        <strong>Keyboard Magic</strong>: Hit a hotkey to pop up the composer instantly, no matter which tab you're on."
+        data-zh-Hant="
+        鍵盤召喚： 無論你在看什麼網頁，按一下快速鍵就直接彈出輸入框，寫完即走。"
+        data-zh-Hans="
+        键盘召唤： 无论你在看什么网页，按一下快捷键就直接弹出输入框，写完即走。"></li>
+
+    <li data-en='
+        <strong>Thread Master</strong>: Easily create threaded toots by automatically replying to your previous toot on the same topic.'
+        data-zh-Hant="
+        絲滑串文： 同話題的嘟文可自動回覆給上一則，形成嘟文串。"
+        data-zh-Hans="
+        丝滑串文： 同话题的嘟文可自动回复给上一则，形成嘟文串。"></li>
+
+    <li data-en="
+        <strong>Templates</strong>: Save time with pre-filled texts for daily toots or hashtags."
+        data-zh-Hant="
+        預填範本： 支援預填常用標籤和文字（如：#讀書記錄、Day X），助力懶人發嘟。"
+        data-zh-Hans="
+        预填模板： 支持预填常用标签和文字（如：#读书记录、Day X），助力懒人发嘟。"></li>
+
+    <li data-en="
+        <strong>Privacy First</strong>: Your data stays in your browser. No middlemen, just you and your Mastodon instance. Export your entire setup as a JSON backup at any time."
+        data-zh-Hant="
+        隱私保障： 你的資料只存在本地瀏覽器。你可以隨時將所有資料匯出為 JSON 檔案進行備份。"
+        data-zh-Hans="
+        隐私保障： 你的数据只存在本地浏览器。你可以随时将所有数据导出为 JSON 文件进行备份。"></li>     
+
+</section>
+
+<div id="main-content">
+
+
+<section id="demo">
+  <h2 data-en="See it in action" 
+      data-zh-Hant="功能演示" 
+      data-zh-Hans="功能演示"
+  ></h2>
+  <div class="masonry">
+    <div class="masonry-item">
+      <div class="caption" >
+      <p data-en="Organize Your Topics" 
+         data-zh-Hant="話題清單" 
+         data-zh-Hans="话题清单"></p>
+      <p data-en="Create 'Topic Lists' for things you post about often—like reading logs, meal check-ins, or just venting about work." 
+         data-zh-Hant="建立「話題清單」管理常用主題，例如：讀書記錄、飲食打卡、工作吐槽。" 
+         data-zh-Hans="建立「话题清单」管理常用主题，例如：读书记录、饮食打卡、工作吐槽。"></p>
+      </div>
+      <img class="lang-img" 
+           data-en="img/demo1-en.png" 
+           data-zh-Hant="img/demo1-zhtw.png" 
+           data-zh-Hans="img/demo1.png" 
+           alt="Organize Your Topics">
+    </div>
+
+    <div class="masonry-item">
+      <div class="caption" >
+        <p data-en="Skip the timeline" 
+         data-zh-Hant="跳過首頁時間線・快速發嘟" 
+         data-zh-Hans="跳过首页时间线・快速发嘟"></p>
+        <p data-en="Hit your hotkey (Default: Ctrl+Shift+Q) on any page to pick a topic and jump straight into the Mastodon composer." 
+         data-zh-Hant="無需打開時間線，在任何網頁按下快速鍵（預設為 Ctrl+Shift+Q）打開外掛面板，選取話題後即自動彈出 Mastodon 原生撰寫頁面，開始寫嘟。" 
+         data-zh-Hans="无需打开时间线，在任何网页按下快捷键（默认为 Ctrl+Shift+Q）打开插件面板，选取话题后即自动弹出 Mastodon 原生撰写页面，开始写嘟。"></p>
+      </div>
+      <img class="lang-img" 
+           data-en="img/demo2.gif" 
+           data-zh-Hant="img/demo2.gif" 
+           data-zh-Hans="img/demo2.gif" 
+           alt="Skip the timeline">
+    </div>
+
+    <div class="masonry-item">
+      <div class="caption" >
+        <p data-en="Instant Toots & Auto-Threads" 
+           data-zh-Hant="一鍵呼出・自動串文" 
+           data-zh-Hans="一键呼出・自动串文"></p>
+        <p>
+        <span data-en="Access your top 3 topics with custom shortcuts (Default: Ctrl/Cmd+Shift+1, 2, 3) without opening the panel."
+           data-zh-Hant="在任何網頁用快速鍵開啟前三個常用話題，無需打開外掛面板。預設 Ctrl/Cmd+Shift+1/2/3，可自訂。"
+           data-zh-Hans="在任何网页用快捷键打开前三个常用话题，无需打开插件面板。默认 Ctrl/Cmd+Shift+1/2/3，可自定义。"></span><br><br>
+        <span
+        data-en="Enable 'Threading' Mode to automatically reply to your previous post under the same topic."
+        data-zh-Hant="在設定中勾選「啟用串文」後，當你在同話題下發嘟時，系統預設將新嘟文以「回覆」形式接續在舊嘟文之後，自動形成串文。"
+        data-zh-Hans="在设置中勾选「启用串文」后，当你在同话题下发嘟时，系统默认将新嘟文以“回复”形式接续在旧嘟文之后，自动形成串文。">
+        </span>
+      </div>
+      <img class="lang-img" 
+           data-en="img/demo3.gif" 
+           data-zh-Hant="img/demo3.gif" 
+           data-zh-Hans="img/demo3.gif" 
+           alt="Instant Toots & Auto-Threads">
+    </div>
+
+    <div class="masonry-item">
+      <div class="caption" >
+        <p data-en="Auto-fill Templates"
+        data-zh-Hant="範本自動填充"
+        data-zh-Hans="模板自动填充"></p>
+
+       <p data-en="Stop typing the same thing twice. You can set a global template or topic-specific templates, with support for placeholders such as {topic}, {streak}, and {heatmap}."
+        data-zh-Hant="發嘟時自動填入重複內容。可使用全域範本，或為此話題建立專屬範本。支持佔位符，如 話題名稱{topic}、最長連續天數 {streak}、熱力圖 {heatmap}。"
+        data-zh-Hans="发嘟时自动填入重复内容。可使用全局模板，或为该话题创建专属模板。支持占位符，例如 话题名{topic}、最近连续发布天数 {streak}、热力图 {heatmap}。">
+        </p>
+      </div>
+      <img class="lang-img" 
+           data-en="img/demo4-en.png" 
+           data-zh-Hant="img/demo4-zhtw.jpg" 
+           data-zh-Hans="img/demo4.png" 
+           alt="Auto-fill Templates">
+    </div>
+  </div>
+</section>
+
+<section id="beforeatry">
+  <h2 data-en="Before you dive in, you might want to know..."
+      data-zh-Hant="在開始嘗試之前，你可能想知道.." 
+      data-zh-Hans="在开始尝试之前，你可能想知道..."></h2>
+    <ul>
+
+      <li data-en="<strong>Supported Platforms:</strong> We support any site using the standard Mastodon API." 
+          data-zh-Hant="<strong>支援哪些站點？</strong>只要是使用標準 Mastodon API 的站點都支援。" 
+          data-zh-Hans="<strong>支持哪些站点？</strong>只要是使用标准 Mastodon API 的站点都支持。"></li>
+          <ul  class="supportOrNot">
+            <li class="supportYes"
+                data-en="✅ Mastodon" 
+                data-zh-Hant="✅ Mastodon" 
+                data-zh-Hans="✅ Mastodon"></li>
+            <li class="supportNo"
+                data-en="❌ Misskey / Firefish / Calckey (Uses a different API)" 
+                data-zh-Hant="❌ Misskey / Firefish / Calckey (使用不同 API，暫不支援)" 
+                data-zh-Hans="❌ Misskey / Firefish / Calckey (使用不同 API，暂不支持)"></li>
+          </ul> 
+      
+      <li data-en="<strong>Supported Browsers:</strong> Most Chromium-based browsers work great." 
+          data-zh-Hant="<strong>支援哪些瀏覽器？</strong>多數 Chromium 核心的瀏覽器皆可使用。"
+          data-zh-Hans="<strong>支持哪些浏览器？</strong>大多数 Chromium 内核的浏览器皆可使用。"></li>
+          <ul class="supportOrNot">
+            <li class="supportYes"
+                data-en="✅ Google Chrome" 
+                data-zh-Hant="✅ Google Chrome" 
+                data-zh-Hans="✅ Google Chrome"></li>
+            <li class="supportYes"
+                data-en="✅ Edge /  Brave /  Vivaldi" 
+                data-zh-Hant="✅ Edge /  Brave /  Vivaldi" 
+                data-zh-Hans="✅ Edge /  Brave /  Vivaldi"></li>
+            <li class="supportNo"
+                data-en="❌ Firefox & Safari (Not supported yet)" 
+                data-zh-Hant="❌ Firefox & Safari (暫時不支援)" 
+                data-zh-Hans="❌ Firefox & Safari (暂时不支持)"></li>
+          </ul> 
+    <li>
+      <strong data-en="Can you see my templates, or topics?" 
+      data-zh-Hant="QuickToot 的作者能看到我的範本或話題嗎？" 
+      data-zh-Hans="QuickToot 的作者能看到我的模板或话题吗？"></strong>
+      <span  data-en="No. Your data stays in your browser's local storage. Nothing leaves your device."
+      data-zh-Hant="不能。所有資料僅保存在你的瀏覽器中。"
+      data-zh-Hans="不能。所有数据仅保存在你的浏览器中。"></span>
+      <span data-en="The extension talks only to your Mastodon instance. The author (me!) can't see your posts, templates, or secrets."
+          data-zh-Hant="資料傳輸僅在你的瀏覽器與 Mastodon 實例之間進行。插件作者無法看到你的內容，包括你的範本或話題。"
+          data-zh-Hans="数据传输仅在你的浏览器与 Mastodon 实例之间进行。插件作者无法看到你的内容，包括你的模板和话题。"></span>
+    </li>
+    <li data-en="<strong>Is it free?</strong> Absolutely. It's free and open source." 
+        data-zh-Hant="<strong>會收費嗎？</strong>免費且開源。" 
+        data-zh-Hans="<strong>会收费吗？</strong>免费且开源。"></li>
+
+    </ul>
+
+    <p data-en="<a href='#faq'>Check out the full FAQ</a>" 
+       data-zh-Hant="<a href='#faq'>查看其他常見問題</a>" 
+       data-zh-Hans="<a href='#faq'>查看其他常见问题</a>"></p>
+
+</section>
+
+
+<section id="install">
+  <h2 data-en="How to install" 
+        data-zh-Hant="安裝指南"
+        data-zh-Hans="安装指南">安装指南</h2>
+  <p class="note" 
+     data-en="Fun fact: The Chrome Store charges a $5 fee, and setting up international payments is a headache. So, I'm sharing the source code with you directly! It's safe, free, and transparent, only takes a minute to set up."
+     data-zh-Hant="Fun fact: Chrome 商店要收 5 美金註冊費，而它不認我的卡。在這個問題解決之前，QuickToot 沒法上架 Chrome 商店，所以我直接把原始碼分享給你"
+     data-zh-Hans="Fun fact: Chrome 商店要收 5 美金注册费，而它不认我的卡。在这个问题解决之前，QuickToot 没法上架 Chrome 商店，所以我直接把源码分享给你">
+  </p>
+  <ol>
+    <li data-en="<a href='{{GITHUB_RELEASE_URL}}' target='_blank'>Click here</a> to download the latest version (look for 'Source code zip') and unzip it anywhere on your computer."
+        data-zh-Hant="前往 <a href='{{GITHUB_RELEASE_URL}}' target='_blank'>下載頁面</a> 取得最新版本（點擊『Source code zip』），下載後解壓縮到你的電腦中。"
+        data-zh-Hans="前往 <a href='{{GITHUB_RELEASE_URL}}' target='_blank'>下载页面</a> 获取最新版本（点击“Source code zip”），下载后解压到你的电脑中。"></li>
+
+    <li data-en="In your browser, go to your 'Extensions' page (you can type <code>chrome://extensions/</code> in the address bar)."
+        data-zh-Hant="打開瀏覽器，進入「擴充功能」頁面（也可以直接在網址列輸入 <code>chrome://extensions/</code>）。"
+        data-zh-Hans="打开浏览器，进入“扩展程序”页面（也可以直接在地址栏输入 <code>chrome://extensions/</code>）。"></li>
+
+<li data-en="Toggle 'Developer mode' on the top right. This simply tells your browser it's okay to load a tool you've downloaded yourself. You only have to do the 'Developer Mode' dance once—after that, QuickToot lives in your browser just like any other extension."
+    data-zh-Hant="開啟右上角的「開發者模式」。"
+    data-zh-Hans="开启右上角的“开发者模式”。">
+</li>
+
+    <li data-en="Click 'Load unpacked' and select the folder you just unzipped. You're all set!🎉"
+        data-zh-Hant="點擊左上角的「載入已解壓縮擴充程式」，選擇剛才解壓的資料夾。——大功告成！🎉"
+        data-zh-Hans="点击左上角的“加载已解压的扩展程序”，选择刚才解压的文件夹。——大功告成！🎉"></li>
+  </ol>
+
+  <div class="update-info" >
+    <p data-en="Stay updated: Check the <a href='{{CHANGELOG_URL}}'>Changelog</a> for new features, or subscribe via <a href='{{RSS_URL}}' target='_blank'>RSS</a> to get notified whenever a new version drops."
+       data-zh-Hant="你可以查看 <a href='{{CHANGELOG_URL}}'>更新日誌</a> 了解新功能，或訂閱 <a href='{{RSS_URL}}' target='_blank'>RSS</a>，第一時間獲得更新通知。"
+       data-zh-Hans="你可以查看 <a href='{{CHANGELOG_URL}}'>更新日志</a> 了解新功能，或订阅 <a href='{{RSS_URL}}' target='_blank'>RSS</a>，第一时间获得更新通知。">
+    </p>
+  </div>
+
+</section>
+
+
+<section id="keyboard-guide">
+  <h2 data-en="Keyboard Shortcuts" 
+      data-zh-Hant="鍵盤操作一覽" 
+      data-zh-Hans="键盘操作一览"></h2>
+
+  <div class="shortcut-grid">
+    <div class="shortcut-item">
+      <div class="keys"><kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>Q</kbd></div>
+      <p data-en="Open QuickToot panel. Focus automatically moves to the first topic." 
+         data-zh-Hant="打開 QuickToot 插件面板。面板出現後，焦點會自動落在話題清單的第一條。" 
+         data-zh-Hans="打开 QuickToot 插件面板。面板出现后，焦点会自动落在话题清单的第一条。"></p>
+    </div>
+
+    <div class="shortcut-item">
+      <div class="keys"><kbd>↑</kbd> / <kbd>↓</kbd></div>
+      <p data-en="Navigate through the topic list." 
+         data-zh-Hant="在話題清單中上下移動選擇話題。" 
+         data-zh-Hans="在话题清单中上下移动选择话题。"></p>
+    </div>
+
+    <div class="shortcut-item">
+      <div class="keys"><kbd>Enter</kbd></div>
+      <p data-en="Trigger the compose window for the selected topic." 
+         data-zh-Hant="當話題獲得焦點時，按 Enter 可觸發嘟文撰寫窗口。" 
+         data-zh-Hans="当话题获得焦点时，按 Enter 可触发嘟文撰写窗口。"></p>
+    </div>
+
+    <div class="shortcut-item">
+      <div class="keys"><kbd>Tab</kbd></div>
+      <p data-en="Cycle focus through UI elements for full keyboard navigation." 
+         data-zh-Hant="在面板內切換焦點，用於鍵盤操作整個介面。" 
+         data-zh-Hans="在面板内切换焦点，用于键盘操作整个界面。"></p>
+    </div>
+
+    <div class="shortcut-item">
+      <div class="keys">
+        <kbd>Ctrl/Cmd</kbd> + <kbd>Shift</kbd> + <kbd>1/2/3</kbd>
+      </div>
+      <div class="desc-group">
+        <p data-en="Directly trigger the first 3 topics without opening the panel." 
+           data-zh-Hant="前 3 個話題默認設置專用快捷鍵。不需要打開插件面板，直接觸發對應話題的撰寫窗口。" 
+           data-zh-Hans="前 3 个话题默认设置专用快捷键。不需要打开插件面板，直接触发对应话题的撰写窗口。"></p>
+        <p class="sub-text" 
+           data-en="Customizable: Click 'More' (three dots) → 'Shortcuts' to rebind or set 'Action after trigger' (Open Compose or Link)." 
+           data-zh-Hant="快捷鍵可自定義：點擊話題右側的「更多」按鈕（...）→「快速鍵」進行設置。可指定開啟撰寫介面或網頁連結。" 
+           data-zh-Hans="快捷键可自定义：点击话题右侧的“更多”按钮（...）→“快捷键”进行设置。可指定打开撰写界面或网页链接。"></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section id="faq">
+  <h2 data-en="Frequently Asked Questions" 
+      data-zh-Hant="常見問題" 
+      data-zh-Hans="常见问题">常见问题</h2>
+  <ol>
+    <li>
+      <strong data-en="How does the 'Threading' feature work?" 
+              data-zh-Hant="如何啟用串文功能？ / 串文功能是如何運作的？" 
+              data-zh-Hans="如何启用串文功能？ / 串文功能是如何运作的？">如何启用串文功能？</strong>
+      <p data-en='Once "Enable threading" is toggled in settings, QuickToot tracks your latest post ID for each topic. New posts will automatically reply to the previous one, building a thread as you go.'
+         data-zh-Hant="在設定中勾選「啟用串文」，並授權 Mastodon。QuickToot 會開始記錄你在每個話題下發出的最近一則嘟文的 ID。當你在同話題下再次發嘟時，系統預設將新嘟文以「回覆」形式接續在舊嘟文之後，自動形成串文。" 
+         data-zh-Hans="在设置中勾选「启用串文」，并授权 Mastodon。QuickToot 会开始记录你在各话题下发出的最近一条嘟文的 ID。当你在同话题下再次发嘟时，系统默认将新嘟文以“回复”形式接续在旧嘟文之后，自动形成串文。"></p>
+    </li>
+
+        <li>
+      <strong data-en="Can I choose to start a new post instead of a reply?"
+              data-zh-Hant="有時想回覆串文，有時不想，可以選擇嗎？" 
+              data-zh-Hans="有时想回复串文，有时不想，可以选择吗？"></strong>
+      <p data-en="Absolutely. Even with threading enabled, you can easily toggle between 'Reply to thread' and 'Post as new' directly in the composer before you hit send." 
+         data-zh-Hant="可以。即使在設定中勾選了「啟用串文」，發布前你仍可在編輯器中自由切換「回覆已有串」或「作為新串第一條嘟文」。" 
+         data-zh-Hans="可以。即使在设置中勾选了「启用串文」，发布前你仍可在编辑器中自由切换“回复已有串”或“作为新串第一条嘟文”。"></p>
+    </li>
+
+    <li>
+      <strong data-en="Can I link QuickToot to a thread I created previously?"
+              data-zh-Hant="我已經有一條串文了，QuickToot 可以接續在該串文下方發佈嗎？" 
+              data-zh-Hans="我已有一条串文了，QuickToot 发的嘟嘟可以回复到之前建立的已有串吗？"></strong>
+      <p data-en="Yes. Simply click 'More' (...) → 'Thread' for that topic and enter the ID of the toot you want to reply to. QuickToot will pick up the thread from there." 
+         data-zh-Hant="可以，QuickToot 支援繫結已有串。在話題旁點選「更多」(...) →「繫結串文」，並輸入你想回覆的那則嘟文 ID 。QuickToot 就會從該處開始自動串文。" 
+         data-zh-Hans="可以，QuickToot 支持绑定已有串。在话题旁点击“更多”(...) →“绑定串文”，并输入你想回复的那条嘟文 ID 。QuickToot 就会从该处开始自动串文。"></p>
+    </li>
+
+    <li>
+      <strong data-en="Why don't @mentions work?" 
+              data-zh-Hant="為什麼 @ 提及不生效？" 
+              data-zh-Hans="为什么 @ 提及不生效？">为什么 @ 提及不生效？</strong>
+      <p data-en="To keep QuickToot lean and prevent accidental spam, @mentions are not supported. It's best used for your own logs, rants, and updates!" 
+         data-zh-Hant="QuickToot 不支援 @ 提及功能。QuickToot 專為個人日誌、心情吐槽與日常紀錄設計。" 
+         data-zh-Hans="QuickToot 不支持 @ 提及功能。QuickToot 专为个人日志、心情吐槽与日常记录设计。"></p>
+    </li>
+
+    <li>
+      <strong data-en="Can I turn off toot templates?" 
+              data-zh-Hant="不想用嘟文範本，可以關閉嗎？" 
+              data-zh-Hans="不想用嘟文模板，可以关闭吗？">不想用嘟文模板，可以关闭吗？</strong>
+      <p data-en="Yes, clear the 'Toot Template (Global)' in settings and save changes." 
+         data-zh-Hant="可以，在設定中清空「預設嘟文範本（全局）」並保存。" 
+         data-zh-Hans="可以，在设置中清空「嘟文模板（全局）」并保存。">可以，在设置中清空「嘟文模板（全局）」并保存。</p>
+    </li>
+
+    <li>
+      <strong data-en="Why can't I select 'Public' when replying in a thread?" 
+              data-zh-Hant="為什麼我回覆串文時不能選「公開」？" 
+              data-zh-Hans="为什么我回复串文时不能选“公开”？">为什么回复串文时不能选“公开”？</strong>
+      <p data-en="Replies inherit the visibility of the original thread and cannot exceed it." 
+         data-zh-Hant="回覆會繼承原串的可見性，不能高於原串設定。" 
+         data-zh-Hans="回复会继承原串的可见性，不能高于原串设置。">回复会继承原串的可见性，不能高于原串设置。</p>
+    </li>
+
+    <li>
+      <strong data-en="Will clearing my browser cache delete my data?" 
+              data-zh-Hant="清除瀏覽器快取會刪除資料嗎？" 
+              data-zh-Hans="清除浏览器缓存会删除数据吗？"></strong>
+      <p>
+        <span data-en="Yes. Since we store everything locally for your privacy, clearing your browser data will wipe QuickToot." 
+         data-zh-Hant="是的。資料皆存在本地。若你清除瀏覽器資料，QuickToot 的設定也會隨之抹除。" 
+         data-zh-Hans="是的。数据皆存在本地。若你清除浏览器数据，QuickToot 的设置也会随之抹除。">
+        </span>
+        <strong data-en="Friendly tip: Export a backup occasionally!" 
+            data-zh-Hant="小撇步：建議定期匯出備份。" 
+            data-zh-Hans="小贴士：建议定期导出备份。">
+        </strong>
+         </p>
+    </li>
+  </ol>
+</section>
+
+
+
+</div>
+
+<div id="img-modal">
+  <span class="arrow left" onclick="prevImg()">❮</span>
+  <img id="modal-img">
+    <div class="caption" id="modal-caption">
+    <p  class="cap-title"></p>
+    <p class="cap-desc"></p>
+    </div>
+  <span class="arrow right" onclick="nextImg()">❯</span>
+</div>
+
+</main>
+
+<!-- 宽屏目录 -->
+<aside class="sidebar-right"> 
+  <div class="notion-toc auto-toc"></div> 
+</aside>
+
+</div>
+
+<footer class="site-footer">
+  <div>
+    <p data-en="QuickToot ・ For tooting, not looting your time.🐘"
+       data-zh-Hant="QuickToot ・ 想嘟就嘟 🐘"
+       data-zh-Hans="QuickToot ・ 想嘟就嘟 🐘"></p>
+  </div>
+  <div class="license-text">
+    <p data-en="This project is open source under <a href='https://www.gnu.org/licenses/agpl-3.0.html' target='_blank' rel='noopener'>the GNU AGPLv3 license</a>."
+       data-zh-Hant="依據 <a href='https://www.gnu.org/licenses/agpl-3.0.html' target='_blank' rel='noopener'>GNU AGPLv3</a> 許可協議開源。"
+       data-zh-Hans="依据 <a href='https://www.gnu.org/licenses/agpl-3.0.html' target='_blank' rel='noopener'>GNU AGPLv3</a> 许可协议开源。"></p>
+  </div>
+</footer>
+
+</body>
+</html>
