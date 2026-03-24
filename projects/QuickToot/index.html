@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-Hans">
+<html>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -26,7 +26,14 @@
 
 
 <div class="page-wrapper">
+
 <main class="content-area">
+
+<section class="announcement">
+  <h3>QuickToot 2.0 现已发布：多账号支持与单条快发</h3>
+  <p>我们重构了面板布局。现在支持<strong>多实例账号切换</strong>，并新增了<strong>「写单条嘟嘟」</strong>按键。</p>
+</section>
+
 
 <!-- 窄屏目录 -->
 <details class="mobile-toc-accordion" id="toc-mobile-container">
@@ -116,9 +123,9 @@
          data-zh-Hans="建立「话题清单」管理常用主题，例如：读书记录、饮食打卡、工作吐槽。"></p>
       </div>
       <img class="lang-img" 
-           data-en="img/demo1-en.png" 
-           data-zh-Hant="img/demo1-zhtw.png" 
-           data-zh-Hans="img/demo1.png" 
+           data-en="img/demo1.jpg" 
+           data-zh-Hant="img/demo1.jpg" 
+           data-zh-Hans="img/demo1.jpg" 
            alt="Organize Your Topics">
     </div>
 
@@ -302,7 +309,7 @@
     <div class="shortcut-item">
       <div class="keys"><kbd>Enter</kbd></div>
       <p data-en="Trigger the compose window for the selected topic." 
-         data-zh-Hant="當話題獲得焦點時，按 Enter 可觸發嘟文撰寫视窗。" 
+         data-zh-Hant="當話題獲得焦點時，按 Enter 可觸發嘟文撰寫窗口。" 
          data-zh-Hans="当话题获得焦点时，按 Enter 可触发嘟文撰写窗口。"></p>
     </div>
 
@@ -318,9 +325,13 @@
         <kbd>Ctrl/Cmd</kbd> + <kbd>Shift</kbd> + <kbd>1/2/3</kbd>
       </div>
       <div class="desc-group">
-        <p data-en="Directly trigger the first 3 topics without opening the panel." 
-           data-zh-Hant="前 3 個話題默認設置專用快捷鍵。不需要打開插件面板，直接觸發對應話題的撰寫窗口。" 
-           data-zh-Hans="前 3 个话题默认设置专用快捷键。不需要打开插件面板，直接触发对应话题的撰写窗口。"></p>
+        <p>
+          <del data-en="Directly trigger the first 3 topics without opening the panel." 
+          data-zh-Hant="前 3 個話題默認設置專用快捷鍵。不需要打開插件面板，直接觸發對應話題的撰寫窗口。" 
+          data-zh-Hans="前 3 个话题默认设置专用快捷键。不需要打开插件面板，直接触发对应话题的撰写窗口。"></del>
+        </p>
+        <p>不需要打开插件面板，直接触发撰写窗口。</p>
+        <p>2.0版本不再固定为前三个话题。你可以自由将其绑定到任何实例的「写单条嘟嘟」按钮或特定话题上。</p>
         <p class="sub-text" 
            data-en="Customizable: Click 'More' (three dots) → 'Shortcuts' to rebind or set 'Action after trigger' (Open Compose or Link)." 
            data-zh-Hant="快捷鍵可自定義：點擊話題右側的「更多」按鈕（...）→「快速鍵」進行設置。可指定開啟撰寫介面或網頁連結。" 
@@ -437,7 +448,6 @@
       
   </ol>
 </section>
-
 
 
 </div>
