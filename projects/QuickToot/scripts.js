@@ -1,17 +1,23 @@
 let currentIndex = 0;
-const images = document.querySelectorAll('.masonry-item img');
-const captions = document.querySelectorAll('.masonry-item .caption');
+const images = document.querySelectorAll('.window-frame img');
 const modal = document.getElementById('img-modal');
 
-// Only add event listeners if the images and modal actually exist on the current page
+// Find the caption belonging to a specific image by walking up to its
+// nearest .demo-col or .demo-row container, then querying inside it.
+function getCaptionFor(img) {
+    const container = img.closest('.demo-col') || img.closest('.demo-row');
+    return container ? container.querySelector('.demo-caption') : null;
+}
+
 if (images.length > 0 && modal) {
-    
+
     images.forEach((img, i) => {
+        img.style.cursor = 'zoom-in';
         img.addEventListener('click', () => showModal(i));
     });
 
     modal.addEventListener('click', e => {
-        if (e.target.id === 'img-modal') closeModal();
+        if (e.target === modal) closeModal();
     });
 }
 
@@ -21,14 +27,13 @@ function showModal(index) {
     const title = document.querySelector('#modal-caption .cap-title');
     const desc = document.querySelector('#modal-caption .cap-desc');
 
-    // Extra safety check
     if (!modal || !modalImg) return;
 
     modalImg.src = images[index].src;
-    const cap = captions[index] ? captions[index].querySelectorAll('p') : [];
 
-    if (title) title.textContent = cap[0]?.textContent || '';
-    if (desc) desc.textContent = cap[1]?.textContent || '';
+    const caption = getCaptionFor(images[index]);
+    if (title) title.innerHTML = caption?.innerHTML || '';
+    if (desc) desc.textContent = '';
 
     modal.style.display = 'flex';
 }
@@ -51,7 +56,7 @@ function nextImg() {
 }
 
 
-// swithc language 
+// switch language 
 function switchLang(lang) {
   const urls = {
     "CHANGELOG_URL": "changlog.html",
@@ -66,9 +71,8 @@ function switchLang(lang) {
     .querySelectorAll('[data-en], [data-zh-hans], [data-zh-hant]')
     .forEach(el => {
     let content = el.dataset[key];
-        
+
     if (!content) content = el.dataset.zhHans;
-    if (!content) content = el.dataset.en ;
     if (!content) return;
 
     Object.keys(urls).forEach(placeholder => {

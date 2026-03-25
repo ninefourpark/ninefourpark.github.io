@@ -1,4 +1,3 @@
-
 :root {
   /* Colors - Core Palette */
   --bg-main: #fcfafc;
@@ -166,73 +165,8 @@ section#demo {
   font-weight: 500;
 }
 
-/* 图片画廊 */
-
-.masonry {
-  display: grid;                  
-  grid-template-columns: 1fr 1fr; 
-  gap: 1.5rem;                   
-}
-
-/* 手机适配 */
-@media (max-width: 600px) {
-  .masonry {
-    grid-template-columns: 1fr; 
-  }
-
-  .masonry-item .caption {
-    font-size: 0.95rem;
-    padding: 0.5rem;
-  }
-  .masonry-item .caption p:first-child {
-    font-size: 1rem;
-  }
-  .masonry-item .caption p:last-child {
-    font-size: 0.9rem;
-  }
-}
-
-.masonry-item {
-  display: inline-block;
-  width: 100%;
-  margin-bottom: 1.5rem;
-  border: 2px solid var(--border-primary); 
-  border-radius: 8px; 
-  overflow: hidden; /* 确保 caption 不跑出圆角 */
-  background: #fff; /* 可选背景 */
-}
-.masonry-item img {
-  width: 100%;
-  display: block;
-  cursor: zoom-in;
-  transition: transform 0.2s;
-  border-top: 1px solid var(--border-primary);
-  border-bottom: 1px solid var(--border-primary);
-}
-
-.masonry-item img:hover { transform: scale(1.02); }
-
-/* Caption 容器 */
-.masonry-item .caption {
-  padding: 0.6rem 0.75rem;
-  font-size: 0.95rem;
-  color: #222;
-  line-height: 1.4;
-}
 
 
-/* 标题和说明分层 */
-.masonry-item .caption p:first-child {
-  font-weight: 600; 
-  font-size: 1.2rem; 
-  margin-bottom: 0.25rem;
-  color: var(--active-bg);
-}
-
-.masonry-item .caption p:last-child {
-  font-weight: 400; 
-  font-size: 1rem;
-}
 
 
 /* 放大图片画廊 */
@@ -270,6 +204,114 @@ section#demo {
 }
 #img-modal .arrow.left { left: 0.5rem; }
 #img-modal .arrow.right { right: 0.5rem; }
+
+
+
+/* Demo Section */
+#demo {
+  margin-top: 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+/* Window frame — same style for all images */
+.window-frame {
+  background: #fff;
+  overflow: hidden;
+  border: 2px solid var(--border-primary);
+  border-radius: 8px;
+  box-shadow: 4px 4px 0 var(--border-primary);
+}
+
+.window-frame img {
+  width: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: top center;
+}
+
+/* Wide row: image on one side, text on the other */
+.demo-row.wide {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 1.5rem;
+  align-items: start;
+}
+
+.demo-row.wide.reverse {
+  grid-template-columns: 1fr 2fr;
+}
+
+/* Two-column row: two images (or image + text) side by side */
+.demo-row.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  align-items: start;
+}
+
+/* For the tall image (demo4.png, 912x1522), cap its height */
+.demo-row.wide.reverse .window-frame img {
+  object-position: top center;
+}
+
+.demo-col {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.demo-col.text-only {
+  justify-content: center;
+  padding: 1rem 0;
+}
+
+.demo-caption {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+.demo-text h3,
+.demo-col h3 {
+  font-size: 1.3rem;
+  color: var(--active-bg);
+  margin: 0 0 0.5rem;
+}
+
+.demo-text p,
+.demo-col p {
+  margin: 0 0 0.5rem;
+}
+
+@media (max-width: 768px) {
+  .demo-row.wide,
+  .demo-row.wide.reverse,
+  .demo-row.two-col {
+    grid-template-columns: 1fr;
+  }
+  .demo-row.wide.reverse .window-frame img {
+    max-height: none;
+  }
+}
+
+
+
+section#beforeatry {
+  padding-top: 1.5rem;
+}
+
+
+
+
+
+
+
+
+
+
+
 
 
 /* 注释 */

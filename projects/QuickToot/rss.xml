@@ -6,7 +6,27 @@
     <description>QuickToot 插件的新版本发布与更新说明</description>
     <language>zh-cn</language>
     <lastBuildDate>Sat, 01 Feb 2026 00:00:00 +0800</lastBuildDate>
-
+    <item>
+      <title>v2.0 · 支持多账号切换 &amp; 新增「写单条嘟嘟」按钮</title>
+      <link>https://ninefourpark.github.io/projects/quicktoot/changlog/</link>
+      <guid>https://ninefourpark.github.io/projects/quicktoot/changlog/#v2.0</guid>
+      <pubDate>Wed, 25 Mar 2026 00:00:00 +0800</pubDate>
+      <description><![CDATA[
+        <ul>
+          <li><strong>支持多实例账号</strong>：新增顶部 Tab 栏，可在多个 Mastodon 账号间快速切换。</li>
+          <li><strong>新增「写单条嘟嘟」按钮</strong>：想快速发嘟但不想发串文？点击「写单条嘟嘟」按钮。可绑定快捷键。在「启用串文」模式下，点击后会唤出 QuickToot 的撰写弹窗。</li>
+          <li><strong>优化导出数据的模式</strong>：支持「备份单个账号」、「备份所有账号」或「生成迁移文件（含登录凭证）」。</li>
+          <li><strong>如何将数据从 v1.0 版本迁移到 v2.0</strong>
+            <ol>
+              <li>在 v1.0 设置中点击“导出数据”。</li>
+              <li>在 v2.0 的「全局设置」里点“导入迁移文件”。(因系统架构升级，导入后请手动前往「当前实例设置」重新勾选“启用串文”完成授权。)</li>
+              <li>⚠️提醒：v1.0 版本“导出数据”按钮导出的文件中含有登录凭证（Access Token），任何人拿到该文件，都可以在无需知道您密码的情况下，直接用您的账号发送嘟嘟。请务必妥善保存并在使用后删除。</li>
+            </ol>
+          </li>
+        </ul>
+        <p><a href="https://github.com/ninefourpark/quicktoot/releases">下载此版本</a></p>
+      ]]></description>
+    </item>
     <item>
       <title>v1.0 · 首个可稳定使用的版本</title>
       <link>https://ninefourpark.github.io/projects/quicktoot/changlog/</link>
